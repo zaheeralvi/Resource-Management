@@ -1,0 +1,89 @@
+<!-- Cards Heading -->
+<div class="d-flex">
+ <!-- <div class="col-md-2 pt-3 bg-light" style="text-align: center"></div> -->
+  <div class="col-md-10">
+      <div class="d-flex pt-5 ">
+          <h4>Featured</h4>
+      </div>
+  </div>
+ 
+  <div class="col-md-2 ">
+      <div class="d-flex pt-5 ">
+          <button type="button" class="btn btn-success">See All</button>
+      </div>
+  </div>
+
+</div>
+
+      <!-- Cards -->
+<div class="d-flex pb-5">
+  <!-- <div class="col-md-2 pt-1 bg-light" style="text-align: center"></div> -->
+  
+  <div class="col-md-12 pt-4">
+    <div class="container-fluid">
+        <div class="row">
+
+          <div class="card col-md-3" *ngFor="let subject of featured" >
+              <div class="card-block pt-3">
+                <a routerLink="/subcat"><img src="assets\images\folder.jpg" width="100%"></a>
+                  <div>
+                      <h4 >{{subject.title}}</h4> 
+                      <p>{{subject.author}}</p> 
+                  </div>
+              </div>                   
+          </div>
+      
+        </div>
+          
+      
+              
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Cards 2 Heading -->
+<div class="d-flex">
+ <!-- <div class="col-md-2 pt-3 bg-light" style="text-align: center"></div> -->
+  <div class="col-md-10">
+      <div class="d-flex pt-5 ">
+          <h4>New and Updated</h4>
+      </div>
+  </div>
+  
+  <div class="col-md-2 ">
+      <div class="d-flex pt-5 ">
+          <button type="button" class="btn btn-success">See All</button>
+      </div>
+  </div>
+
+</div>
+ 
+       <!-- Cards 2 -->
+       <div class="d-flex pb-5">
+            <!-- <div class="col-md-2 pt-1 bg-light" style="text-align: center"></div> -->
+            
+            <div class="col-md-12 pt-4">
+              <div class="container-fluid">
+                  <div class="row" >
+          
+                    <div class="card col-md-3" *ngFor="let subject of new" >
+                        <div class="card-block pt-3">
+                           <a routerLink="/subcat"><img src="assets\images\folder.jpg" width="100%"></a>
+                            <div>
+                                <h4>{{subject.title}}</h4> 
+                                <p>{{subject.author}}</p> 
+                            </div>
+                        </div>                   
+                    </div>
+                
+                    
+          
+                  </div>
+                    
+                
+                        
+              </div>
+            </div>
+          </div>

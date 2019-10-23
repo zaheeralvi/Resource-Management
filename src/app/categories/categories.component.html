@@ -1,0 +1,18 @@
+<div class="d-flex pb-5">
+    <!-- <div class="col-md-2 pt-1 bg-light" style="text-align: center"></div> -->
+    <div class="col-md-12 pt-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card col-md-3" *ngFor='let sub of subjects'>
+                    <div class="card-block pt-3">
+                        <a [routerLink]="['/subcat', sub.id]"><img src="assets\images\folder.jpg" width="100%"></a>
+                        <div>
+                            <h4>{{sub.title}}</h4>
+                            <p>John Doe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+#Title {
+  text-align: center;
+  color: white;
+}
+.grey_title {
+  border-radius: 10px;
+}
+.pic_padding {
+  padding-left: 0px;
+}
+#Description {
+  color: white;
+}
