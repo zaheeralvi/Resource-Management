@@ -23,4 +23,12 @@ export class PendingComponent implements OnInit {
     })
   }
 
+  async approve(id,i){
+    let data = await this.api.getData('/approve_resource/?rsc_id='+id)
+    data.subscribe((res:any)=>{
+      console.log(res)
+      this.data.splice(i, 1);
+    })
+  }
+
 }
