@@ -11,6 +11,7 @@ import { PendingComponent } from './pending/pending.component';
 import { SearchComponent } from './search/search.component';
 import { TopicsComponent } from './topics/topics.component';
 import { SubTopicComponent } from './sub-topic/sub-topic.component';
+import { AddResourceComponent } from './add-resource/add-resource.component';
 
 const routes: Routes = [
   { path: '',
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path : "addtopic", component:AddtopicComponent},
   {path : "search", component:SearchComponent},
   {path : "topics", component:TopicsComponent},
-  {path : "sub-topics", component:SubTopicComponent}
+  {path : "sub-topics", component:SubTopicComponent},
+  {path : "add-resource", component:AddResourceComponent},
 ];
 
 @NgModule({

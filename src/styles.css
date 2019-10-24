@@ -9,3 +9,12 @@ label.error {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.form-container form{
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+textarea{
+  resize: none;
+  height: 150px;
+}

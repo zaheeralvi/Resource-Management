@@ -16,6 +16,7 @@ import { AddtopicComponent } from './addtopic/addtopic.component';
 import { SearchComponent } from './search/search.component';
 import { TopicsComponent } from './topics/topics.component';
 import { SubTopicComponent } from './sub-topic/sub-topic.component';
+import { AddResourceComponent } from './add-resource/add-resource.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SubTopicComponent } from './sub-topic/sub-topic.component';
     AddtopicComponent,
     SearchComponent,
     TopicsComponent,
-    SubTopicComponent
+    SubTopicComponent,
+    AddResourceComponent
   ],
   imports: [
     BrowserModule,
