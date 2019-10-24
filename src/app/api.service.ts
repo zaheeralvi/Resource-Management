@@ -17,7 +17,10 @@ export class ApiService {
   }
 
   getData(url) {
-    return this.http.get(url, this.httpHeaders)
+    return this.http.get(this.baseurl + url, this.httpHeaders)
+  }
+  postData(url,data) {
+    return this.http.post(this.baseurl + url,data, this.httpHeaders)
   }
 
 }

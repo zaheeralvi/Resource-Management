@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+label.error{
+    color: #ff0000;
+    padding-left: 15px;
+    font-size: 14px;
+}

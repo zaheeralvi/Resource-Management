@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
   }
 
   async getSearchResult() {
-    const data = await this.api.getData('http://ruangilmo.pythonanywhere.com/search/?q=' + this.query)
+    const data = await this.api.getData('/search/?q=' + this.query)
     data.subscribe((res:any)=>{
       console.log(res)
       this.data=res

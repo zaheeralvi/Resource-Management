@@ -28,7 +28,7 @@ export class ResourceComponent implements OnInit {
   }
 
   async getResources(){
-    let data=await this.api.getData(`http://ruangilmo.pythonanywhere.com/navigate/?sub_id=${this.subcat}&lev_id=${this.lvl}&tpc_id=${this.topic}`)
+    let data=await this.api.getData(`/navigate/?sub_id=${this.subcat}&lev_id=${this.lvl}&tpc_id=${this.topic}`)
     data.subscribe((res:any)=>{
       console.log(res)
       this.data=res.filter(r=>r.resource_type==this.type)

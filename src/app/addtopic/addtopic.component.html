@@ -7,25 +7,23 @@
   </nav>
 </div>
 
-<div class="col-md-7 ml-5 mt-5 mb-5">
-  <form>
+<div class="col-md-7 ml-5 mt-5 mb-5 form-container">
+  <form [formGroup]="addTopic" class="form" (submit)='addTopicHandler()'>
     <div class="form-group">
-      <label for="exampleInputEmail1">Resource Link</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Resource Link Here">
+      <label for="exampleInputEmail1">Title</label>
+      <input type="text" class="form-control" formControlName='title' placeholder="Enter Resource Link Here">
+      <label class="error" *ngIf="subbmitted && f.title.errors">Title is required</label>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Subject</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Subject">
+      <input type="number" class="form-control" formControlName='subject'  placeholder="Subject">
+      <label class="error" *ngIf="subbmitted && f.subject.errors">Subject is required</label>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Level</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Topic Level">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Author</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Author Name">
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Submit</button>
+      <input type="number" class="form-control" formControlName='level'  placeholder="Topic Level">
+      <label class="error" *ngIf="subbmitted && f.level.errors">Level is required</label>
+    </div>   
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
   </form>
 </div>
