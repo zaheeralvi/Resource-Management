@@ -18,3 +18,24 @@ textarea{
   resize: none;
   height: 150px;
 }
+.form-control:focus{
+  box-shadow: none;
+  border-color: #ced4da
+}
+.user.dropdown-toggle::after{
+  position: relative;
+  bottom: -10px;
+}
+.bg-theme{
+  background-color: #f36f3a !important
+}
+.bg-success{
+  background-color: #1d8459 !important
+}
+.btn-success{
+  background-color: #1d8459 !important;
+  border-color: #1d8459 !important
+}
+.h4, h4{
+  font-size: 18px;
+}
