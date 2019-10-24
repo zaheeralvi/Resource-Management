@@ -33,6 +33,7 @@ export class AddtopicComponent implements OnInit {
       let data=this.api.postData('/create_topic/',topic)
       data.subscribe((res:any)=>{
         console.log(res)
+        this.addTopic.reset();
       })
     }
   }

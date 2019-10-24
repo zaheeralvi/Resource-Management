@@ -8,54 +8,14 @@
 </div>
 
 <div class="container-fulid pt-2">
-  <div class="d-flex">
-    <div class="col-md-3 pb-3">
-        <!-- Title -->
+  <div class="row">
+    <div class="col-md-3 pb-3" *ngFor='let item of data'>
         <div class="card">
-            <h5 class="card-title pt-2" style="text-align: center;">Nota Sains Tahun 2</h5>
+            <h5 class="card-title pt-2 text-center ellipsis">{{item.resource_type}}</h5>
             <img class="card-img-top"  src="assets/images/book.png"  alt="Card image cap">
             <div class="card-body">
               <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png" style="border: 1px solid black">
-              <p class="card-text" style="text-align: center;">Some Text Here Related to the snippet</p>
-              <button class="btn btn-success">Approve Topic</button>
-              </div>
-          </div>
-    </div>
-
-    <div class="col-md-3 pb-3">
-        <!-- Title -->
-        <div class="card">
-            <h5 class="card-title pt-2" style="text-align: center;">Nota Sains Tahun 2</h5>
-            <img class="card-img-top"  src="assets/images/book.png"  alt="Card image cap">
-            <div class="card-body">
-              <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png" style="border: 1px solid black">
-              <p class="card-text" style="text-align: center;">Some Text Here Related to the snippet</p>
-              <button class="btn btn-success">Approve Topic</button>
-              </div>
-          </div>
-    </div>
-
-    <div class="col-md-3 pb-3">
-        <!-- Title -->
-        <div class="card">
-            <h5 class="card-title pt-2" style="text-align: center;">Nota Sains Tahun 2</h5>
-            <img class="card-img-top"  src="assets/images/book.png"  alt="Card image cap">
-            <div class="card-body">
-              <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png" style="border: 1px solid black">
-              <p class="card-text" style="text-align: center;">Some Text Here Related to the snippet</p>
-              <button class="btn btn-success">Approve Topic</button>
-              </div>
-          </div>
-    </div>
-
-    <div class="col-md-3 pb-3">
-        <!-- Title -->
-        <div class="card">
-            <h5 class="card-title pt-2" style="text-align: center;">Nota Sains Tahun 2</h5>
-            <img class="card-img-top"  src="assets/images/book.png"  alt="Card image cap">
-            <div class="card-body">
-              <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png" style="border: 1px solid black">
-              <p class="card-text" style="text-align: center;">Some Text Here Related to the snippet</p>
+              <p class="card-text ellipsis">{{item.description}}</p>
               <button class="btn btn-success">Approve Topic</button>
               </div>
           </div>
