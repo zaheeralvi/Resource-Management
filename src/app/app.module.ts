@@ -13,6 +13,8 @@ import { AdminComponent } from './admin/admin.component';
 import { PendingComponent } from './pending/pending.component';
 import { AddtopicComponent } from './addtopic/addtopic.component';
 import { SearchComponent } from './search/search.component';
+import { TopicsComponent } from './topics/topics.component';
+import { SubTopicComponent } from './sub-topic/sub-topic.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { SearchComponent } from './search/search.component';
     AdminComponent,
     PendingComponent,
     AddtopicComponent,
-    SearchComponent
+    SearchComponent,
+    TopicsComponent,
+    SubTopicComponent
   ],
   imports: [
     BrowserModule,

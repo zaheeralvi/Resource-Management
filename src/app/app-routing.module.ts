@@ -9,10 +9,12 @@ import { AdminComponent } from './admin/admin.component';
 import { AddtopicComponent } from './addtopic/addtopic.component';
 import { PendingComponent } from './pending/pending.component';
 import { SearchComponent } from './search/search.component';
+import { TopicsComponent } from './topics/topics.component';
+import { SubTopicComponent } from './sub-topic/sub-topic.component';
 
 const routes: Routes = [
   { path: '',
-    redirectTo: '/home',
+    redirectTo: '/categories',
     pathMatch: 'full'
   },
   {path: "categories", component:CategoriesComponent},
@@ -23,7 +25,9 @@ const routes: Routes = [
   {path : "admin", component:AdminComponent},
   {path : "pending", component:PendingComponent},
   {path : "addtopic", component:AddtopicComponent},
-  {path : "search", component:SearchComponent}
+  {path : "search", component:SearchComponent},
+  {path : "topics", component:TopicsComponent},
+  {path : "sub-topics", component:SubTopicComponent}
 ];
 
 @NgModule({

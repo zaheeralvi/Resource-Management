@@ -10,19 +10,21 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'angApp';
   @ViewChild("inputSearch") search: ElementRef;
-  constructor(private http:HttpClient,private router:Router){
+  constructor(private http: HttpClient, private router: Router) {
+    this.login()
   }
 
-  async ngOnInit(){
-    await this.http.get('http://ruangilmo.pythonanywhere.com/sign_me_in?usr_id=1').subscribe((res:any)=>{
-      console.log('app.component.ts')
-      console.log(res)
-      console.log('app.component.ts')
-      // localStorage.setItem('Token','token '+res.Token)
+  ngOnInit() {
+
+  }
+
+  async login() {
+    await this.http.get('http://ruangilmo.pythonanywhere.com/sign_me_in?usr_id=1').subscribe((res: any) => {
+      localStorage.setItem('Token','token '+res.Token)
     })
   }
 
-  searchContents(){
-    this.router.navigateByUrl('/search?q='+this.search.nativeElement.value)
+  searchContents() {
+    this.router.navigateByUrl('/search?q=' + this.search.nativeElement.value)
   }
 }

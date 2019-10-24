@@ -1,32 +1,30 @@
-
 <div>
     <div class="col-md-4">
-            <a routerLink="/gridresource"><img src="https://img.icons8.com/ios-filled/30/000000/activity-grid--v2.png"></a>
-            <a routerLink="/resource"><img src="https://img.icons8.com/material-two-tone/40/000000/day-view.png"></a>
+        <a routerLink="/gridresource"><img src="https://img.icons8.com/ios-filled/30/000000/activity-grid--v2.png"></a>
+        <a routerLink="/resource"><img src="https://img.icons8.com/material-two-tone/40/000000/day-view.png"></a>
     </div>
 </div>
 <!-- Header -->
-<div class="container-fulid d-flex pt-2">
-    <!-- Title -->
-
+<div class="container-fulid d-flex pt-2" *ngFor='let resource of data'>
     <div class="col-md-7 offset-md-1 grey_title pb-1" style="background-color: green; border: 1px solid black">
         <div class="pt-2" id="Title">
-            <h5>Nota Sains Tahun 2</h5>
+            <h5>{{resource.resource_type}}</h5>
         </div>
         <!-- Search Bar-->
         <div class="d-flex">
             <a href="#"><img src="assets/images/left.png" width="40px"></a>
             <a href="#"><img src="assets/images/Right.png" width="40px"></a>
             <a href="#"><img src="assets/images/Reset.png" width="60px"></a>
-            <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png" style="border: 1px solid black">
-        </div>           
+            <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png"
+                style="border: 1px solid black">
+        </div>
         <div style="background-color: #fff; border: 1px solid Black">
             <div class="d-flex pt-3 pb-3">
             </div>
         </div>
         <div class="d-flex">
-        <img src="assets/images/book.png" width="20%" class="pl-2">
-        <p class="pt-3 pl-3" id="Description"><b>Whether you are an athlete, an investor, a writer or an entrepreneur, this little but soulful book will open the door to a healthier, less anxious and more productive life and career.</b></p>
+            <img src="assets/images/book.png" width="20%" class="pl-2">
+            <p class="pt-3 pl-3" id="Description"><b>{{resource.description}}</b></p>
         </div>
     </div>
     <div class="col-md-3 pl-5">
@@ -34,164 +32,8 @@
             <div class="d-flex flex-column">
                 <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
                 <a href="#"><img src="assets/images/Share.png" width="55px" title="Share It"></a>
-                <a href="#"><img src="assets/images/Profile.png" width="60px"></a> 
+                <a href="#"><img src="assets/images/Profile.png" width="60px"></a>
             </div>
-        </div>
-    </div>
-</div>
-
-<!-- Line Section -->
-<div class="d-flex">
-        <div class="col-md-10 offset-md-1">
-            <hr color="black">
-        </div>
-    </div>
-<!-- Header -->
-<div class="container-fulid d-flex pt-2">
-    <!-- Title -->
-
-    <div class="col-md-7 offset-md-1 grey_title pb-1" style="background-color: green; border: 1px solid black">
-        <div class="pt-2" id="Title">
-            <h5>Nota Sains Tahun 2</h5>
-        </div>
-        <!-- Search Bar-->
-        <div class="d-flex">
-            <a href="#"><img src="assets/images/left.png" width="40px"></a>
-            <a href="#"><img src="assets/images/Right.png" width="40px"></a>
-            <a href="#"><img src="assets/images/Reset.png" width="60px"></a>
-            <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png" style="border: 1px solid black">
-        </div>           
-        <div style="background-color: #fff; border: 1px solid Black">
-            <div class="d-flex pt-3 pb-3">
-            </div>
-        </div>
-        <div class="d-flex">
-        <img src="assets/images/book.png" width="20%" class="pl-2">
-        <p class="pt-3 pl-3" id="Description"><b>Whether you are an athlete, an investor, a writer or an entrepreneur, this little but soulful book will open the door to a healthier, less anxious and more productive life and career.</b></p>
-        </div>
-    </div>
-    <div class="col-md-3 pl-5">
-        <div class="d-flex">
-            <div class="d-flex flex-column">
-                <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
-                <a href="#"><img src="assets/images/Share.png" width="55px" title="Share It"></a>
-                <a href="#"><img src="assets/images/Profile.png" width="60px"></a> 
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Line Section -->
-<div class="d-flex">
-        <div class="col-md-10 offset-md-1">
-            <hr color="black">
-        </div>
-    </div>
-
-<!-- Header -->
-<div class="container-fulid d-flex pt-2">
-    <!-- Title -->
-
-    <div class="col-md-7 offset-md-1 grey_title pb-1" style="background-color: green; border: 1px solid black">
-        <div class="pt-2" id="Title">
-            <h5>Nota Sains Tahun 2</h5>
-        </div>
-        <!-- Search Bar-->
-        <div class="d-flex">
-            <a href="#"><img src="assets/images/left.png" width="40px"></a>
-            <a href="#"><img src="assets/images/Right.png" width="40px"></a>
-            <a href="#"><img src="assets/images/Reset.png" width="60px"></a>
-            <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png" style="border: 1px solid black">
-        </div>           
-        <div style="background-color: #fff; border: 1px solid Black">
-            <div class="d-flex pt-3 pb-3">
-            </div>
-        </div>
-        <div class="d-flex">
-        <img src="assets/images/book.png" width="20%" class="pl-2">
-        <p class="pt-3 pl-3" id="Description"><b>Whether you are an athlete, an investor, a writer or an entrepreneur, this little but soulful book will open the door to a healthier, less anxious and more productive life and career.</b></p>
-        </div>
-    </div>
-    <div class="col-md-3 pl-5">
-        <div class="d-flex">
-            <div class="d-flex flex-column">
-                <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
-                <a href="#"><img src="assets/images/Share.png" width="55px" title="Share It"></a>
-                <a href="#"><img src="assets/images/Profile.png" width="60px"></a> 
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Line Section -->
-<div class="d-flex">
-        <div class="col-md-10 offset-md-1">
-            <hr color="black">
-        </div>
-    </div>  
-<!-- Second Row Image -->
-<div class="d-flex pt-2">
-    <div class="col-md-6 offset-md-1">
-        <div class="d-flex pt-2">
-            <input type="text" class="form-control" placeholder="Keterangan Ringkas" style="border: 1px solid black;">
-        </div>
-    </div>     
-</div>
-
-<!-- Rate Us Form -->
-<div class="d-flex pt-4"> 
-    <div class="col-md-7 offset-md-1">
-    <form>
-          <div class="form-group d-flex">
-              <div class="d-flex">
-              <div>
-                <h5>Rate This Link</h5>
-              </div>
-              <div>
-                  <img src="assets/images/BlackStar.png"  width="6%">
-                  <img src="assets/images/BlackStar.png" width="6%">
-                  <img src="assets/images/BlackStar.png" width="6%">
-                  <img src="assets/images/FillStar.png" width="6%">
-                  <img src="assets/images/FillStar.png" width="6%">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <h5 for="exampleInputPassword1">Comment : </h5>
-              <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Comment Here"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-          <button class="btn btn-success ml-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">All Comment</button>                   
-        </form>
-    </div>
-</div>
-<!-- Line Section -->
-<div class="d-flex">
-    <div class="col-md-10 offset-md-1">
-        <hr>
-    </div>
-</div>
-
-<!-- Review Section -->
-<div class="d-flex collapse" id="collapseExample">
-    <div class="col-md-2 offset-md-1">
-        <div class="d-flex pic_padding">
-            <img src="assets/images/Author.png" width="70%">
-        </div>
-    </div>
-    <div class="col-md-5 pr-5 pic_padding">
-        <div class="d-flex flex-column">
-            <h4>Fiona Macdonald</h4>
-            <div class="d-flex flex-row">
-                <img src="assets/images/BlackStar.png" width="4%">
-                <img src="assets/images/BlackStar.png" width="4%">
-                <img src="assets/images/BlackStar.png" width="4%">
-                <img src="assets/images/FillStar.png" width="4%">
-                <img src="assets/images/FillStar.png" width="4%">
-                <span><i style="color: #222" class="pl-3"> October 8, 2019</i></span>
-            </div>
-            <p class="pt-2">
-            Good game but expensive. This is not a game for free players, here you pay to play. Unlike most games there isn't a login bonus unless you buy a pack. These start off cheap then double in price so you can't just spend £5 or £10 when you feel like buying something which means that the developers are ...
-            </p>
         </div>
     </div>
 </div>

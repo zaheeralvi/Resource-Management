@@ -7,7 +7,7 @@
       
                 <div class="card col-md-3" *ngFor="let level of data">
                     <div class="card-block pt-3">
-                            <a routerLink="/resource"><img src="assets\images\folder.jpg" width="100%"></a>
+                            <a [routerLink]="['/topics']" [queryParams]="{ subcat: id,lvl:level.id}"><img src="assets\images\folder.jpg" width="100%"></a>
                         <div>
                             <h4>{{level.title}}</h4>
                         </div>

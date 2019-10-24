@@ -14,7 +14,6 @@ export class SearchComponent implements OnInit {
   constructor(private route: ActivatedRoute, private api: ApiService) {
     this.query = this.route.queryParams
     this.query = this.query._value.q
-
   }
 
   ngOnInit() {
