@@ -26,6 +26,6 @@ export class AppComponent implements OnInit {
   }
 
   searchContents() {
-    this.router.navigateByUrl('/search?q=' + this.search.nativeElement.value)
+    this.router.navigateByUrl('search?q=' + this.search.nativeElement.value)
   }
 }
