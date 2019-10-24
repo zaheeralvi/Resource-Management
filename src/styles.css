@@ -39,3 +39,6 @@ textarea{
 .h4, h4{
   font-size: 18px;
 }
+.pointer{
+  cursor: pointer;
+}
