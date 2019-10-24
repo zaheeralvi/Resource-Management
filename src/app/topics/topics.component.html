@@ -1,0 +1,16 @@
+<div class="d-flex pb-5"> 
+  <div class="col-md-12 pt-4">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="card col-md-3" *ngFor="let topic of data">
+              <div class="card-block pt-3">
+                      <a [routerLink]="['/sub-topics']" [queryParams]="{ subcat: subcat,lvl:lvl,topic:topic.id}"><img src="assets\images\folder.jpg" width="100%"></a>
+                  <div>
+                      <h4>{{topic.title}}</h4>
+                  </div>
+              </div>                   
+          </div>        
+        </div> 
+    </div>
+  </div>
+</div>
