@@ -11,6 +11,7 @@ export class SearchComponent implements OnInit {
 
   query: any;
   data:any;
+  empty=false;
   constructor(private route: ActivatedRoute, private api: ApiService) {
     this.query = this.route.queryParams
     this.query = this.query._value.q
@@ -25,7 +26,11 @@ export class SearchComponent implements OnInit {
     const data = await this.api.getData('/search/?q=' + this.query)
     data.subscribe((res:any)=>{
       console.log(res)
-      this.data=res
+      if(res.length==0){
+        this.empty=true
+      }else{
+        this.data=res
+      }
     })
   }
 

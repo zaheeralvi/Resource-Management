@@ -11,6 +11,7 @@ export class SubcatComponent implements OnInit {
   
   id;
   data:any;
+  empty=false;
   levels = [
     {
       lev : '1',
@@ -36,7 +37,11 @@ export class SubcatComponent implements OnInit {
     const data=await this.api.getData('/get_level_by_subject/?sub_id='+this.id)
     data.subscribe((res:any)=>{
       console.log(res)
-      this.data=res;
+      if(res.length==0){
+        this.empty=true
+      }else{
+        this.data=res;
+      }
     })
   }
 

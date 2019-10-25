@@ -1,24 +1,28 @@
 <div class="d-flex">
-  
-  
+
+
   <nav class="navbar navbar-expand-lg navbar-light col-md-10" style="background-color:#fff">
-    <a class="navbar-brand pr-2" routerLink="/pending" >Pending</a>
-    <a class="navbar-brand pr-2" routerLink="/addtopic" >Add Topic</a>     
+    <a class="navbar-brand pr-2" routerLink="/pending">Pending</a>
+    <a class="navbar-brand pr-2" routerLink="/addtopic">Add Topic</a>
   </nav>
 </div>
 
 <div class="container-fulid pt-2">
   <div class="row">
     <div class="col-md-3 pb-3" *ngFor='let item of data; let i = index'>
-        <div class="card">
-            <h5 class="card-title pt-2 text-center ellipsis">{{item.resource_type}}</h5>
-            <img class="card-img-top"  src="assets/images/book.png"  alt="Card image cap">
-            <div class="card-body">
-              <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png" style="border: 1px solid black">
-              <p class="card-text ellipsis">{{item.description}}</p>
-              <button class="btn btn-success" (click)='approve(item.id,i)'>Approve Topic</button>
-              </div>
-          </div>
+      <div class="card">
+        <h5 class="card-title pt-2 text-center ellipsis">{{item.resource_type}}</h5>
+        <img class="card-img-top" src="assets/images/book.png" alt="Card image cap">
+        <div class="card-body">
+          <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png"
+            style="border: 1px solid black">
+          <p class="card-text ellipsis">{{item.description}}</p>
+          <button class="btn btn-success" (click)='approve(item.id,i)'>Approve Topic</button>
+        </div>
+      </div>
     </div>
-  </div> 
+    <div class="not_found" *ngIf='empty'>
+      <img src="assets/images/not-found.png" alt="">
+    </div>
+  </div>
 </div>

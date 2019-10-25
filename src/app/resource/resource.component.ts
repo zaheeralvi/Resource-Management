@@ -14,6 +14,7 @@ export class ResourceComponent implements OnInit {
   lvl;
   topic;
   type;
+  empty=false;
   data:any;
   constructor(private route: ActivatedRoute, private api: ApiService) {
     this.query = this.route.queryParams
@@ -31,7 +32,11 @@ export class ResourceComponent implements OnInit {
     let data=await this.api.getData(`/navigate/?sub_id=${this.subcat}&lev_id=${this.lvl}&tpc_id=${this.topic}`)
     data.subscribe((res:any)=>{
       console.log(res)
-      this.data=res.filter(r=>r.resource_type==this.type)
+      if(res.length==0){
+        this.empty=true
+      }else{
+        this.data=res.filter(r=>r.resource_type==this.type)
+      }
     })
   }
 

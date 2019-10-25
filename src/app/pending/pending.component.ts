@@ -9,6 +9,7 @@ import { ApiService } from '../api.service';
 export class PendingComponent implements OnInit {
 
   data: any;
+  empty=false
   constructor(private api: ApiService) { }
 
   ngOnInit() {
@@ -19,7 +20,11 @@ export class PendingComponent implements OnInit {
     let data = await this.api.getData('/get_pending/')
     data.subscribe((res: any) => {
       console.log(res)
-      this.data = res
+      if(res.length==0){
+        this.empty=true
+      }else{
+        this.data = res
+      }
     })
   }
 

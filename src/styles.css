@@ -1,8 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+form label{
+  font-weight: bold;
+  color: #a9a7a7;
+}
 label.error {
   color: #ff0000;
   padding-left: 15px;
   font-size: 14px;
+  font-weight: normal
 }
 .ellipsis {
   overflow: hidden;
@@ -22,9 +27,11 @@ textarea{
   box-shadow: none;
   border-color: #ced4da
 }
+.user.dropdown-toggle{
+  cursor: pointer;
+}
 .user.dropdown-toggle::after{
-  position: relative;
-  bottom: -10px;
+  display: none
 }
 .bg-theme{
   background-color: #f36f3a !important
@@ -41,4 +48,16 @@ textarea{
 }
 .pointer{
   cursor: pointer;
+}
+.not_found{
+  width: 100%;
+  flex: 0 0 100%;
+  text-align: center;
+  padding-top: 40px;
+}
+#Title{
+  text-transform: capitalize;
+}
+#Description{
+  text-transform: capitalize;
 }

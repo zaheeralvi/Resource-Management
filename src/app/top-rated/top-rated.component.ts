@@ -10,6 +10,7 @@ import { async } from '@angular/core/testing';
 export class TopRatedComponent implements OnInit {
 
   data: any;
+  empty=false
   constructor(private api: ApiService) { }
 
   ngOnInit() {
@@ -19,7 +20,11 @@ export class TopRatedComponent implements OnInit {
     let data = this.api.getData('sort_resources/?rating=True')
     data.subscribe((res: any) => {
       console.log(res)
-      this.data = res
+      if(res.length==0){
+        this.empty=true;
+      }else{
+        this.data = res
+      }
 
     })
   }

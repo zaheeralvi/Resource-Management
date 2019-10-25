@@ -9,6 +9,7 @@ import { ApiService } from '../api.service';
 export class CategoriesComponent implements OnInit {
 
   subjects:any;
+  empty=false
   constructor(private api: ApiService) {
    }
 
@@ -21,6 +22,8 @@ export class CategoriesComponent implements OnInit {
     data.subscribe((res: any) => {
       if(res.length>0){
         this.subjects=res;
+      }else{
+        this.empty=true
       }
     })
   }

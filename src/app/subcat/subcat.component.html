@@ -1,24 +1,20 @@
 <div class="d-flex pb-5">
-        <!-- <div class="col-md-2 pt-1 bg-light" style="text-align: center"></div> -->
-        
-        <div class="col-md-12 pt-4">
-          <div class="container-fluid">
-              <div class="row">
-      
-                <div class="card col-md-3" *ngFor="let level of data">
-                    <div class="card-block pt-3">
-                            <a [routerLink]="['/topics']" [queryParams]="{ subcat: id,lvl:level.id}"><img src="assets\images\folder.jpg" width="100%"></a>
-                        <div>
-                            <h4>{{level.title}}</h4>
-                        </div>
-                    </div>                   
-                </div>
-            
-                
-              </div>
-                
-            
-                    
+  <div class="col-md-12 pt-4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="card col-md-3" *ngFor="let level of data">
+          <div class="card-block pt-3">
+            <a [routerLink]="['/topics']" [queryParams]="{ subcat: id,lvl:level.id}"><img src="assets\images\folder.jpg"
+                width="100%"></a>
+            <div>
+              <h4>{{level.title}}</h4>
+            </div>
           </div>
         </div>
+        <div class="not_found" *ngIf='empty'>
+          <img src="assets/images/not-found.png" alt="">
       </div>
+      </div>
+    </div>
+  </div>
+</div>
