@@ -37,3 +37,62 @@
         </div>
     </div>
 </div>
+<!-- Rate Us Form -->
+<div class="row pt-4">
+    <div class="col-md-7 offset-md-1">
+        <form [formGroup]='commentForm'>
+            <div class="form-group">
+                <div>
+                    <h5>Rate This Link</h5>
+                </div>
+                <div>
+                    <img src="assets/images/BlackStar.png" width="6%">
+                    <img src="assets/images/BlackStar.png" width="6%">
+                    <img src="assets/images/BlackStar.png" width="6%">
+                    <img src="assets/images/FillStar.png" width="6%">
+                    <img src="assets/images/FillStar.png" width="6%">
+                </div>
+            </div>
+            <div class="form-group">
+                <h5 for="exampleInputPassword1">Comment : </h5>
+                <textarea type="password" class="form-control" formControlName="rate"                     placeholder="Enter Your Comment Here"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button class="btn btn-success ml-2" type="button" data-toggle="collapse" data-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">All Comment</button>
+        </form>
+    </div>
+</div>
+<!-- Line Section -->
+<div class="d-flex">
+    <div class="col-md-10 offset-md-1">
+        <hr>
+    </div>
+</div>
+
+<!-- Review Section -->
+<div class="d-flex collapse" id="collapseExample">
+    <div class="col-md-2 offset-md-1">
+        <div class="d-flex pic_padding">
+            <img src="assets/images/Author.png" width="70%">
+        </div>
+    </div>
+    <div class="col-md-5 pr-5 pic_padding">
+        <div class="d-flex flex-column">
+            <h4>Fiona Macdonald</h4>
+            <div class="d-flex flex-row">
+                <img src="assets/images/BlackStar.png" width="4%">
+                <img src="assets/images/BlackStar.png" width="4%">
+                <img src="assets/images/BlackStar.png" width="4%">
+                <img src="assets/images/FillStar.png" width="4%">
+                <img src="assets/images/FillStar.png" width="4%">
+                <span><i style="color: #222" class="pl-3"> October 8, 2019</i></span>
+            </div>
+            <p class="pt-2">
+                Good game but expensive. This is not a game for free players, here you pay to play. Unlike most games
+                there isn't a login bonus unless you buy a pack. These start off cheap then double in price so you can't
+                just spend £5 or £10 when you feel like buying something which means that the developers are ...
+            </p>
+        </div>
+    </div>
+</div>
