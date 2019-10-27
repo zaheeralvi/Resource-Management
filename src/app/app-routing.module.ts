@@ -13,6 +13,8 @@ import { TopicsComponent } from './topics/topics.component';
 import { SubTopicComponent } from './sub-topic/sub-topic.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
 import { TopRatedComponent } from './top-rated/top-rated.component';
+import { RoleComponent } from './role/role.component';
+import { TeachersListComponent } from './teachers-list/teachers-list.component';
 
 const routes: Routes = [
   { path: '',
@@ -32,6 +34,8 @@ const routes: Routes = [
   {path : "sub-topics", component:SubTopicComponent},
   {path : "add-resource", component:AddResourceComponent},
   {path : "top-rated", component:TopRatedComponent},
+  {path : "role", component:RoleComponent},
+  {path : "teachers", component:TeachersListComponent},
 ];
 
 @NgModule({

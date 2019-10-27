@@ -19,6 +19,13 @@ import { SubTopicComponent } from './sub-topic/sub-topic.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
 import { TopRatedComponent } from './top-rated/top-rated.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { RoleComponent } from './role/role.component';
+import { TeachersListComponent } from './teachers-list/teachers-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,13 +41,17 @@ import { TopRatedComponent } from './top-rated/top-rated.component';
     TopicsComponent,
     SubTopicComponent,
     AddResourceComponent,
-    TopRatedComponent
+    TopRatedComponent,
+    RoleComponent,
+    TeachersListComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [],
   bootstrap: [AppComponent]

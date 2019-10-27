@@ -34,7 +34,7 @@ export class SubcatComponent implements OnInit {
   }
 
   getSubCategories=async ()=>{
-    const data=await this.api.getData('/get_level_by_subject/?sub_id='+this.id)
+    const data=await this.api.getData('get_level_by_subject/?sub_id='+this.id)
     data.subscribe((res:any)=>{
       console.log(res)
       if(res.length==0){

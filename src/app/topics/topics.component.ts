@@ -38,7 +38,7 @@ export class TopicsComponent implements OnInit {
   }
 
   async getTopics(){
-    let data=await this.api.getData(`/get_topic_by_sub_level/?sub_id=${this.subcat}&lev_id=${this.lvl}`)
+    let data=await this.api.getData(`get_topic_by_sub_level/?sub_id=${this.subcat}&lev_id=${this.lvl}`)
     data.subscribe((res:any)=>{
       console.log(res)
       if(res.length==0){

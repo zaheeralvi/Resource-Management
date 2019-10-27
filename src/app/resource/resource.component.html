@@ -1,38 +1,48 @@
 <div>
     <div class="col-md-4">
-        <a routerLink="/gridresource"><img src="https://img.icons8.com/ios-filled/30/000000/activity-grid--v2.png"></a>
-        <a routerLink="/resource"><img src="https://img.icons8.com/material-two-tone/40/000000/day-view.png"></a>
+        <a class="pointer" (click)="layoutChange(1)"><img
+                src="https://img.icons8.com/ios-filled/30/000000/activity-grid--v2.png"></a>
+        <a class="pointer" (click)="layoutChange(2)"><img
+                src="https://img.icons8.com/material-two-tone/40/000000/day-view.png"></a>
     </div>
 </div>
 <!-- Header -->
-<div class="container-fulid d-flex pt-2" *ngFor='let resource of data'>
-    <div class="col-md-7 offset-md-1 grey_title pb-1" style="background-color: #1d8459; border: 1px solid black">
-        <div class="pt-2" id="Title">
-            <h5>{{resource.resource_type}}</h5>
-        </div>
-        <!-- Search Bar-->
-        <!-- <div class="d-flex">
-            <a href="#"><img src="assets/images/left.png" width="40px"></a>
-            <a href="#"><img src="assets/images/Right.png" width="40px"></a>
-            <a href="#"><img src="assets/images/Reset.png" width="60px"></a>
-            <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png"
-                style="border: 1px solid black">
-        </div>
-        <div style="background-color: #fff; border: 1px solid Black">
-            <div class="d-flex pt-3 pb-3">
+<div *ngIf='list'>
+    <div class="container-fulid d-flex pt-2" *ngFor='let resource of data'>
+        <div class="col-md-7 offset-md-1 grey_title pb-1" style="background-color: #1d8459; border: 1px solid black">
+            <div class="pt-2" id="Title">
+                <h5>{{resource.resource_type}}</h5>
             </div>
-        </div> -->
-        <div class="d-flex">
-            <img src="assets/images/book.png" width="20%" class="pl-2">
-            <p class="pt-3 pl-3" id="Description"><b>{{resource.description}}</b></p>
+            <div class="d-flex">
+                <img src="assets/images/book.png" width="20%" class="pl-2">
+                <p class="pt-3 pl-3" id="Description"><b>{{resource.description}}</b></p>
+            </div>
+        </div>
+        <div class="col-md-3 pl-5">
+            <div class="d-flex">
+                <div class="d-flex flex-column">
+                    <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
+                    <a href="#"><img src="assets/images/Share.png" width="55px" title="Share It"></a>
+                    <a class="pointer" (click)="followAuther(resource.author)"><img src="assets/images/Profile.png"
+                            width="60px" title="Follow Auther"></a>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-3 pl-5">
-        <div class="d-flex">
-            <div class="d-flex flex-column">
-                <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
-                <a href="#"><img src="assets/images/Share.png" width="55px" title="Share It"></a>
-                <a href="#"><img src="assets/images/Profile.png" width="60px"></a>
+</div>
+
+<div class="container-fulid pt-2" *ngIf='grid'>
+    <div class="row">
+        <div class="col-md-3 pb-3" *ngFor='let resource of data'>
+            <!-- Title -->
+            <div class="card">
+                <h5 class="card-title pt-2 text-capitalize" style="text-align: center;">{{resource.resource_type}}</h5>
+                <img class="card-img-top" src="assets/images/book.png" alt="Card image cap">
+                <div class="card-body">
+                    <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png"
+                        style="border: 1px solid black">
+                    <p class="card-text" style="text-align: center;">{{resource.description}}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -40,7 +50,8 @@
 <div class="not_found" *ngIf='empty'>
     <img src="assets/images/not-found.png" alt="">
 </div>
-<!-- Rate Us Form -->
+
+<!-- 
 <div class="row pt-4">
     <div class="col-md-7 offset-md-1">
         <form [formGroup]='commentForm'>
@@ -66,14 +77,11 @@
         </form>
     </div>
 </div>
-<!-- Line Section -->
 <div class="d-flex">
     <div class="col-md-10 offset-md-1">
         <hr>
     </div>
 </div>
-
-<!-- Review Section -->
 <div class="d-flex collapse" id="collapseExample">
     <div class="col-md-2 offset-md-1">
         <div class="d-flex pic_padding">
@@ -98,4 +106,4 @@
             </p>
         </div>
     </div>
-</div>
+</div> -->

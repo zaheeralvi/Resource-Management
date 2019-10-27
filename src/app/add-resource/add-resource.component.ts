@@ -33,7 +33,7 @@ export class AddResourceComponent implements OnInit {
   }
 
   getSubjects = async () => {
-    const data = await this.api.getData('/get_subjects/')
+    const data = await this.api.getData('get_subjects/')
     data.subscribe((res: any) => {
       console.log(res)
       if (res.length > 0) {
@@ -45,7 +45,7 @@ export class AddResourceComponent implements OnInit {
   async getLevel(e) {
     this.sub_id = e.target.value;
 
-    const data = await this.api.getData('/get_level_by_subject/?sub_id=' + this.sub_id)
+    const data = await this.api.getData('get_level_by_subject/?sub_id=' + this.sub_id)
     data.subscribe((res: any) => {
       console.log(res)
       this.subCat = res;
@@ -55,7 +55,7 @@ export class AddResourceComponent implements OnInit {
   async getTopic(e){
     this.lvl_id = e.target.value;
 
-    let data=await this.api.getData(`/get_topic_by_sub_level/?sub_id=${this.sub_id}&lev_id=${this.lvl_id}`)
+    let data=await this.api.getData(`get_topic_by_sub_level/?sub_id=${this.sub_id}&lev_id=${this.lvl_id}`)
     data.subscribe((res:any)=>{
       console.log(res)
       this.topic=res;

@@ -17,7 +17,7 @@ export class PendingComponent implements OnInit {
   }
 
   async getPending() {
-    let data = await this.api.getData('/get_pending/')
+    let data = await this.api.getData('get_pending/')
     data.subscribe((res: any) => {
       console.log(res)
       if(res.length==0){
@@ -29,7 +29,7 @@ export class PendingComponent implements OnInit {
   }
 
   async approve(id,i){
-    let data = await this.api.getData('/approve_resource/?rsc_id='+id)
+    let data = await this.api.getData('approve_resource/?rsc_id='+id)
     data.subscribe((res:any)=>{
       console.log(res)
       this.data.splice(i, 1);
