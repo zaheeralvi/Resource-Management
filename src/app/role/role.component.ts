@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-role',
@@ -10,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RoleComponent implements OnInit {
 
-  constructor(private api:ApiService,private router:Router,private toastr: ToastrService) { }
+  constructor(private api:ApiService,private router:Router) { }
 
   ngOnInit() {
   }
@@ -20,7 +19,6 @@ export class RoleComponent implements OnInit {
     let data= await this.api.postData('set_retrieve_role/',{'role':role})
     data.subscribe((res:any)=>{
       console.log(res)
-      this.toastr.success(`Successfully Registered a ${role}`)
       this.router.navigateByUrl('/categories')
     })
   }

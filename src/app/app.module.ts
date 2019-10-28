@@ -26,7 +26,6 @@ import { environment } from '../environments/environment';
 import { RoleComponent } from './role/role.component';
 import { TeachersListComponent } from './teachers-list/teachers-list.component';
 import { LoginComponent } from './login/login.component';
-import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -55,7 +54,6 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    ToastrModule.forRoot() 
   ],
   providers: [],
   bootstrap: [AppComponent]
