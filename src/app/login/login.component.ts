@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   logged = false
-  constructor(private authService:AuthService,private api:ApiService,private router:Router,) { }
+  constructor(private authService: AuthService, private api: ApiService, private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
   }
@@ -20,18 +21,16 @@ export class LoginComponent implements OnInit {
     let res = await this.authService.doGoogleLogin();
     if (res) {
       this.logged = true
-      let data = await this.api.getData('set_retrieve_role/')
-      data.subscribe((res: any) => {
-        console.log(res)
-        console.log('go to home')
-        this.router.navigateByUrl('/categories')
-      }, (err: any) => {
-        console.log('Set Profile')
-        console.log(err)
-        this.router.navigateByUrl('/role')
+      let httpHeaders = { headers: new HttpHeaders({ 'Authorization': localStorage.getItem('Token') }) }
+      this.http.get(this.api.baseurl + 'set_retrieve_role/', httpHeaders).subscribe((result: any) => {
+        console.log(result)
+        if (result.role!=undefined){
+          window.location.href='/categories'
+        }else{
+          window.location.href='/role'
+        }
       })
     }
   }
-
 }
 

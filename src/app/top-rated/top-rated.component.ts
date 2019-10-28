@@ -19,15 +19,19 @@ export class TopRatedComponent implements OnInit {
   topRated = async () => {
     let data = this.api.getData('sort_resources/?rating=True')
     data.subscribe((res: any) => {
-      console.log(res)
-      if(res.length==0){
-        this.empty=true;
-      }else{
-        this.data = res
+      this.data = res.resources;
+      for (let i = 0; i < this.data.length; i++) {
+        let comments=res.comments.filter(c=>c.resource==this.data[i].id)
+        let ratings=res.ratings.filter(c=>c.resource==this.data[i].id)
+        this.data[i]={...this.data[i],comments:comments,ratings:ratings}
       }
-
+      console.log(this.data)
+      if (this.data.length == 0) {
+        this.empty = true
+      }
     })
   }
+
   saveLink = async (id) => {
     let data = this.api.getData(`save_resource?rsc_id=${id}`)
     data.subscribe((res: any) => {

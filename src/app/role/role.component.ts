@@ -9,17 +9,19 @@ import { Router } from '@angular/router';
 })
 export class RoleComponent implements OnInit {
 
-  constructor(private api:ApiService,private router:Router) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  setRole=async (role)=>{
-    console.log(role)
-    let data= await this.api.postData('set_retrieve_role/',{'role':role})
-    data.subscribe((res:any)=>{
+  setRole = async (role) => {
+    let data = await this.api.postData('set_retrieve_role/', { 'role': role })
+    data.subscribe((res: any) => {
       console.log(res)
-      this.router.navigateByUrl('/categories')
+      window.location.href = '/categories'
+    }, (err: any) => {
+      console.log(err.error.Error)
+      window.location.href = '/categories'
     })
   }
 

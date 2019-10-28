@@ -61,3 +61,10 @@ textarea{
 #Description{
   text-transform: capitalize;
 }
+.pic_padding.comment{
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f36f3a
+}
+.d-flex.collapse:last-child .pic_padding.comment{
+  border-bottom: none
+}

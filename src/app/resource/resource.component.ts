@@ -15,10 +15,12 @@ export class ResourceComponent implements OnInit {
   lvl;
   topic;
   type;
-  empty=false;
-  data:any;
-  grid=false;
-  list=true;
+  empty = false;
+  data: any;
+  comments: any;
+  ratings: any;
+  grid = false;
+  list = true;
   constructor(private route: ActivatedRoute, private api: ApiService) {
     this.query = this.route.queryParams
     this.subcat = this.query._value.subcat
@@ -31,32 +33,36 @@ export class ResourceComponent implements OnInit {
     this.getResources()
   }
 
-  async getResources(){
-    let data=await this.api.getData(`navigate/?sub_id=${this.subcat}&lev_id=${this.lvl}&tpc_id=${this.topic}`)
-    data.subscribe((res:any)=>{
-      console.log(res)
-      if(res.length==0){
-        this.empty=true
-      }else{
-        this.data=res.filter(r=>r.resource_type==this.type)
+  async getResources() {
+    let data = await this.api.getData(`navigate/?sub_id=${this.subcat}&lev_id=${this.lvl}&tpc_id=${this.topic}`)
+    data.subscribe((res: any) => {
+      this.data = res.resources.filter((r: any) => r.resource_type == this.type)
+      for (let i = 0; i < this.data.length; i++) {
+        let comments=res.comments.filter(c=>c.resource==this.data[i].id)
+        let ratings=res.ratings.filter(c=>c.resource==this.data[i].id)
+        this.data[i]={...this.data[i],comments:comments,ratings:ratings}
+      }
+      console.log(this.data)
+      if (this.data.length == 0) {
+        this.empty = true
       }
     })
   }
 
-  followAuther=async (auther)=>{
-    let data= await this.api.getData('follow_author/?aut_id=1')
-    data.subscribe((res:any)=>{
+  followAuther = async (auther) => {
+    let data = await this.api.getData('follow_author/?aut_id=1')
+    data.subscribe((res: any) => {
       console.log(res)
     })
   }
 
-  layoutChange(n){
-    if(n==1){
-      this.grid=true
-      this.list=false
-    }else{
-      this.grid=false
-      this.list=true
+  layoutChange(n) {
+    if (n == 1) {
+      this.grid = true
+      this.list = false
+    } else {
+      this.grid = false
+      this.list = true
     }
   }
 

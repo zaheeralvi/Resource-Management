@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { ApiService } from './api.service';
 import { AuthService } from './auth.service';
 
@@ -13,20 +13,33 @@ export class AppComponent implements OnInit {
   title = 'angApp';
   logged = false;
   user = null;
-  loginPage=false;
+  loginPage = false;
+  
+mySubscription: any;
   @ViewChild("inputSearch") search: ElementRef;
   constructor(private http: HttpClient, private router: Router, private api: ApiService, private authService: AuthService) {
     if (localStorage.getItem('Token') != null || localStorage.getItem('Token') != undefined) {
       this.logged = true
-    }else{
+    } else {
       this.router.navigateByUrl('/login')
     }
 
-    if(window.location.pathname=='/login' || window.location.pathname=='/role'){
-      this.loginPage=true
-    }else{
-      this.loginPage=false
+    if (window.location.pathname == '/login' || window.location.pathname == '/role') {
+      this.loginPage = true
+    } else {
+      this.loginPage = false
     }
+
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+      }
+    });
+
   }
 
   ngOnInit() {
@@ -34,6 +47,12 @@ export class AppComponent implements OnInit {
       this.user = user;
     })
     console.log(this.user);
+  }
+
+  ngOnDestroy() {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
   }
 
   // async login() {
@@ -56,7 +75,7 @@ export class AppComponent implements OnInit {
     let res = this.authService.logout();
     if (res) {
       this.logged = false
-
+      window.location.href = '/login'
     }
   }
   searchContents() {
@@ -64,4 +83,5 @@ export class AppComponent implements OnInit {
       this.router.navigateByUrl('search?q=' + this.search.nativeElement.value)
     }
   }
+
 }
