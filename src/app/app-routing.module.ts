@@ -15,10 +15,11 @@ import { AddResourceComponent } from './add-resource/add-resource.component';
 import { TopRatedComponent } from './top-rated/top-rated.component';
 import { RoleComponent } from './role/role.component';
 import { TeachersListComponent } from './teachers-list/teachers-list.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '',
-    redirectTo: '/categories',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {path: "categories", component:CategoriesComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path : "top-rated", component:TopRatedComponent},
   {path : "role", component:RoleComponent},
   {path : "teachers", component:TeachersListComponent},
+  {path : "login", component:LoginComponent},
 ];
 
 @NgModule({

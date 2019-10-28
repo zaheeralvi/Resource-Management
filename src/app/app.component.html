@@ -2,7 +2,7 @@
 <div class="d-flex bg-light">
 
   <div class="col-md-2 pt-2" style="text-align: center">
-    <a routerLink="/home"><img src="assets/images/logo1.png" width="100" height="60"></a>
+    <a routerLink="/categories"><img src="assets/images/logo1.png" width="100" height="60"></a>
   </div>
 
   <div class="col-md-6 pt-3">
@@ -16,9 +16,10 @@
 
   <div class="col-md-1"> </div>
 
-  <div class="col-md-2 mt-3 mb-3 text-center bg-theme text-white" style="border-radius: 3px;padding-top:5px;" *ngIf='!logged'>
+  <!-- <div class="col-md-2 mt-3 mb-3 text-center bg-theme text-white" style="border-radius: 3px;padding-top:5px;"
+    *ngIf='!logged'>
     <a class="pointer" (click)="login()">Login With Google</a>
-  </div>
+  </div> -->
   <div class="dropdown col-md-3 pt-3 pr-5 text-right" *ngIf='logged'>
     <a class=" dropdown-toggle user" data-toggle="dropdown">
       <img height="40" width="40" src="assets/images/user-logo.png">
@@ -33,39 +34,43 @@
 
 
 <!-- Second Navabr -->
-<div class="d-flex">
+<!-- <div class="d-flex">
 
   <div class="col-md-2 pt-3 pb-2 bg-theme">
     <div class="d-flex pl-4 pr-2">
-      <!---- <img src="Bars.png" width="30" height="30" class="mr-4"> -->
       <h4 style="color: White">Resources</h4>
     </div>
   </div>
 
   <nav class="navbar navbar-expand-lg navbar-light col-md-10" style="background-color:#fff">
-    <!-- <a class="navbar-brand pr-2" routerLink="/categories">Categories</a> -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <!-- <a class="nav-item nav-link active" routerLink="/top-rated">Top Rated <span class="sr-only">(current)</span></a> -->
         <a class="nav-item nav-link" href="#">My Pins</a>
         <a class="nav-item nav-link" routerLink="/pending">Admin</a>
       </div>
     </div>
   </nav>
-</div>
+</div> -->
 
-<div class="d-flex" style="min-height: 80vh;">
-  <div class="col-md-2 pt-3 bg-light" style="text-align: center">
+<div class="d-flex" style="min-height: 80vh;" *ngIf='!loginPage'>
+  <div class="col-md-2 bg-light px-0" style="text-align: center">
+    <div class="col-12 pt-3 pb-2 px-0 bg-theme mb-3">
+      <div class="pl-4 pr-2">
+        <h4 style="color: White">Resources</h4>
+      </div>
+    </div>
     <h5><a routerLink="/resource">My Resources</a></h5>
     <h6 class="pt-2"><a routerLink="/add-resource">Create Resource</a></h6>
     <h5 class="pt-2"><a href="#" style="color: #1d8459;">Follow</a></h5>
     <div class="pl-5">
       <hr>
     </div>
+    <h6><a class="nav-item nav-link" href="#">My Pins</a></h6>
+    <h6><a class="nav-item nav-link" routerLink="/pending">Admin</a></h6>
     <h6><a routerLink="/categories">Categories</a></h6>
     <h6 class="pt-1"><a routerLink="/top-rated">Top Rated</a></h6>
     <h6 class="pt-1"><a href="#">Top Authors</a></h6>
@@ -82,4 +87,7 @@
   </div>
 
 
+</div>
+<div class="d-flex" style="min-height: 80vh;text-align: center;align-items: center;width: 75%;justify-content: space-around;" *ngIf='loginPage'>
+    <router-outlet></router-outlet>
 </div>

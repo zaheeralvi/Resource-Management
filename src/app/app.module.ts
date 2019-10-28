@@ -25,6 +25,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { RoleComponent } from './role/role.component';
 import { TeachersListComponent } from './teachers-list/teachers-list.component';
+import { LoginComponent } from './login/login.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { TeachersListComponent } from './teachers-list/teachers-list.component';
     AddResourceComponent,
     TopRatedComponent,
     RoleComponent,
-    TeachersListComponent
+    TeachersListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { TeachersListComponent } from './teachers-list/teachers-list.component';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    ToastrModule.forRoot() 
   ],
   providers: [],
   bootstrap: [AppComponent]

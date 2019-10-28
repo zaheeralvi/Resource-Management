@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-resource',
@@ -17,7 +18,7 @@ export class AddResourceComponent implements OnInit {
   sub_id;
   lvl_id;
   topic_id;
-  constructor(private fb: FormBuilder, private api: ApiService, ) { }
+  constructor(private fb: FormBuilder, private api: ApiService,private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getSubjects();
@@ -65,6 +66,7 @@ export class AddResourceComponent implements OnInit {
   addResourceHandler() {
     if (this.addResource.invalid) {
       this.subbmitted = true
+      this.toastr.error('All Fields are Required')
     } else {
       let topic = {
         link: this.addResource.controls['link'].value,
@@ -78,6 +80,7 @@ export class AddResourceComponent implements OnInit {
       let data = this.api.postData('get_create_resource/', topic)
       data.subscribe((res: any) => {
         console.log(res)
+        this.toastr.success('New Resource added Successfully')
         this.addResource.reset();
       })
     }

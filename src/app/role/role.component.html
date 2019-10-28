@@ -1,5 +1,11 @@
-<div class="d-flex pb-5">
+<div class="text-center py-5">
   <h3> What Best Describe You?</h3>
-  <button (click)="setRole('teacher')">Teacher</button>
-  <button (click)="setRole('student')">Student</button>
+  <div class="role mt-5 text-center pointer" (click)="setRole('teacher')" title="Register as Teacher">
+    <img src="assets/images/teacher.png" alt="teacher">
+    <h3 style="margin-top:20px;">Teacher</h3>
+  </div>
+  <div class="role mt-5 text-center pointer" (click)="setRole('student')" title="Register as Student">
+    <img src="assets/images/student.png" alt="student" style="border-radius: 50%;border: 6px solid #f36f3a;">
+    <h3 style="margin-top:20px;">Student</h3>
+  </div>
 </div>
