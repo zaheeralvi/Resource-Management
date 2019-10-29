@@ -1,38 +1,61 @@
-<div>
-    <div class="col-md-4">
-        <a class="pointer" (click)="layoutChange(1)"><img
-                src="https://img.icons8.com/ios-filled/30/000000/activity-grid--v2.png"></a>
-        <a class="pointer" (click)="layoutChange(2)"><img
-                src="https://img.icons8.com/material-two-tone/40/000000/day-view.png"></a>
+<div *ngIf="!modal">
+    <div>
+        <div class="col-md-4">
+            <a class="pointer" (click)="layoutChange(1)"><img
+                    src="https://img.icons8.com/ios-filled/30/000000/activity-grid--v2.png"></a>
+            <a class="pointer" (click)="layoutChange(2)"><img
+                    src="https://img.icons8.com/material-two-tone/40/000000/day-view.png"></a>
+        </div>
     </div>
-</div>
-<!-- Header -->
-<div *ngIf='list'>
-    <div class="container-fulid pt-2" *ngFor='let resource of data'>
-        <div class="row">
-            <div class="col-md-7 offset-md-1 grey_title pb-1"
-                style="background-color: #1d8459; border: 1px solid black">
-                <div class="pt-2" id="Title">
-                    <h5>{{resource.resource_type}}</h5>
+
+    <div *ngIf='list'>
+        <div class="container-fulid pt-2" *ngFor='let resource of data'>
+            <div class="row">
+                <div class="col-md-7 offset-md-1 grey_title pb-1"
+                    style="background-color: #1d8459; border: 1px solid black">
+                    <div class="pt-2" id="Title">
+                        <h5>{{resource.resource_type}}</h5>
+                    </div>
+                    <div class="d-flex">
+                        <img src="assets/images/book.png" width="20%" class="pl-2">
+                        <p class="pt-3 pl-3" id="Description"><b>{{resource.description}}</b></p>
+                    </div>
+                    <button class="btn btn-secondary text-white float-right" (click)="resourceDetails(resource)">more
+                        Details</button>
                 </div>
-                <div class="d-flex">
-                    <img src="assets/images/book.png" width="20%" class="pl-2">
-                    <p class="pt-3 pl-3" id="Description"><b>{{resource.description}}</b></p>
-                </div>
-            </div>
-            <div class="col-md-3 pl-5">
-                <div class="d-flex">
-                    <div class="d-flex flex-column">
-                        <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
-                        <star-rating [value]="resource.avg_rating" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true"></star-rating>
-                        <a class="pointer" (click)="followAuther(resource.author)"><img src="assets/images/Profile.png"
-                                width="60px" title="Follow Auther"></a>
+                <div class="col-md-3 pl-5">
+                    <div class="d-flex">
+                        <div class="d-flex flex-column">
+                            <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
+                            <star-rating [value]="resource.avg_rating" checkedcolor="red" uncheckedcolor="black"
+                                size="24px" readonly="true"></star-rating>
+                            <a class="pointer" (click)="followAuther(resource.author)"><img
+                                    src="assets/images/Profile.png" width="60px" title="Follow Auther"></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 pt-5">
-            <div class="d-flex collapse" *ngFor="let comment of resource.comments">
+
+            <div class="col-12 pt-5">
+                <div class="d-flex collapse" *ngFor="let comment of resource.fewComment">
+                    <div class="col-md-1 offset-md-1">
+                        <div class="d-flex pic_padding">
+                            <img src="assets/images/Author.png" width="50" style="border-radius: 50%">
+                        </div>
+                    </div>
+                    <div class="col-md-5 pr-5 pic_padding comment">
+                        <div class="d-flex flex-column">
+                            <h4>{{comment.commenter_name}}
+                                <star-rating [value]="getRating(comment.commenter,resource.id)" checkedcolor="red"
+                                    uncheckedcolor="black" size="24px" readonly="true"></star-rating>
+                            </h4>
+                            <p class="pt-2">{{comment.comment}}</p>
+                            <span class="data"
+                                style="font-size: 12px;position: absolute;right: 0;top:10px;">{{comment.created | date:medium}}</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="d-flex collapse" *ngFor="let rate of onlyRating">
                 <div class="col-md-1 offset-md-1">
                     <div class="d-flex pic_padding">
                         <img src="assets/images/Author.png" width="50" style="border-radius: 50%">
@@ -40,65 +63,125 @@
                 </div>
                 <div class="col-md-5 pr-5 pic_padding comment">
                     <div class="d-flex flex-column">
-                        <h4>{{comment.commenter_name}}</h4>
-                        <span class="data">{{comment.created | date:medium}}</span>
-                        <p class="pt-2">{{comment.comment}}</p>
+                        <h4>{{rate.rated_by_name}} 
+                            <star-rating [value]="rate.rating" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true"></star-rating>
+                        </h4>
+                        <p class="pt-2"></p>
+                        <span class="data" style="font-size: 12px;position: absolute;right: 0;top:10px;">{{rate.created | date:medium}}</span>
+                    </div>
+                </div>
+            </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fulid pt-2" *ngIf='!list'>
+        <div class="row">
+            <div class="col-md-3 pb-3" *ngFor='let resource of data'>
+                <div class="card">
+                    <h5 class="card-title pt-2 text-capitalize" style="text-align: center;">{{resource.resource_type}}
+                    </h5>
+                    <img class="card-img-top" src="assets/images/book.png" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text" style="text-align: center;">{{resource.description}}</p>
+                        <p class="text-center">
+                            <star-rating [value]="resource.avg_rating" checkedcolor="red" uncheckedcolor="black"
+                                size="24px" readonly="true"></star-rating>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="not_found" *ngIf='empty'>
+        <img src="assets/images/not-found.png" alt="">
+    </div>
 </div>
 
-<div class="container-fulid pt-2" *ngIf='grid'>
-    <div class="row">
-        <div class="col-md-3 pb-3" *ngFor='let resource of data'>
-            <!-- Title -->
-            <div class="card">
-                <h5 class="card-title pt-2 text-capitalize" style="text-align: center;">{{resource.resource_type}}</h5>
-                <img class="card-img-top" src="assets/images/book.png" alt="Card image cap">
-                <div class="card-body">
-                    <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png"
-                        style="border: 1px solid black">
-                    <p class="card-text" style="text-align: center;">{{resource.description}}</p>
-                    <star-rating [value]="resource.avg_rating" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true"></star-rating>
+
+<div *ngIf="modal">
+    <div class="container-fulid pt-2">
+        <div class="row">
+            <strong class="pointer pl-3" (click)="hideModal()">〈 Back</strong>
+            <div class="col-md-7 offset-md-1 grey_title pb-1"
+                style="background-color: #1d8459; border: 1px solid black">
+                <div class="pt-2" id="Title">
+                    <h5>{{modelData.resource_type}}</h5>
+                </div>
+                <div class="d-flex">
+                    <img src="assets/images/book.png" width="20%" class="pl-2">
+                    <p class="pt-3 pl-3" id="Description"><b>{{modelData.description}}</b></p>
+                </div>
+            </div>
+            <div class="col-md-3 pl-5">
+                <div class="d-flex">
+                    <div class="d-flex flex-column">
+                        <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
+                        <star-rating [value]="modelData.avg_rating" checkedcolor="red" uncheckedcolor="black"
+                            size="24px" readonly="true"></star-rating>
+                        <a class="pointer" (click)="followAuther(modelData.author)"><img src="assets/images/Profile.png"
+                                width="60px" title="Follow Auther"></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="not_found" *ngIf='empty'>
-    <img src="assets/images/not-found.png" alt="">
-</div>
 
-
-<!-- <div class="row pt-4">
-    <div class="col-md-7 offset-md-1">
-        <form [formGroup]='commentForm'>
-            <div class="form-group">
-                <div>
-                    <h5>Rate This Link</h5>
+        <div class="col-12 pt-5">
+            <div class="d-flex collapse" *ngFor="let comment of modelData.comments">
+                <div class="col-md-1 offset-md-1">
+                    <div class="d-flex pic_padding">
+                        <img src="assets/images/Author.png" width="50" style="border-radius: 50%">
+                    </div>
                 </div>
-                <div>
-                    <img src="assets/images/BlackStar.png" width="6%">
-                    <img src="assets/images/BlackStar.png" width="6%">
-                    <img src="assets/images/BlackStar.png" width="6%">
-                    <img src="assets/images/FillStar.png" width="6%">
-                    <img src="assets/images/FillStar.png" width="6%">
+                <div class="col-md-5 pr-5 pic_padding comment">
+                    <div class="d-flex flex-column">
+                        <h4>{{comment.commenter_name}}
+                            <star-rating [value]="getRating(comment.commenter,modelData.id)" checkedcolor="red"
+                                uncheckedcolor="black" size="24px" readonly="true"></star-rating>
+                        </h4>
+                        <p class="pt-2">{{comment.comment}}</p>
+                        <span class="data"
+                            style="font-size: 12px;position: absolute;right: 0;top:10px;">{{comment.created | date:medium}}</span>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <h5 for="exampleInputPassword1">Comment : </h5>
-                <textarea type="password" class="form-control" formControlName="rate"                     placeholder="Enter Your Comment Here"></textarea>
+            <div class="d-flex collapse" *ngFor="let rate of onlyRating">
+                <div class="col-md-1 offset-md-1">
+                    <div class="d-flex pic_padding">
+                        <img src="assets/images/Author.png" width="50" style="border-radius: 50%">
+                    </div>
+                </div>
+                <div class="col-md-5 pr-5 pic_padding comment">
+                    <div class="d-flex flex-column">
+                        <h4>{{rate.rated_by_name}}
+                            <star-rating [value]="rate.rating" checkedcolor="red" uncheckedcolor="black" size="24px"
+                                readonly="true"></star-rating>
+                        </h4>
+                        <p class="pt-2"></p>
+                        <span class="data"
+                            style="font-size: 12px;position: absolute;right: 0;top:10px;">{{rate.created | date:medium}}</span>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button class="btn btn-success ml-2" type="button" data-toggle="collapse" data-target="#collapseExample"
-                aria-expanded="false" aria-controls="collapseExample">All Comment</button>
-        </form>
+        </div>
+        <div class="row py-4">
+            <div class="col-md-7 offset-md-2">
+                <form [formGroup]='rateCommentForm'>
+                    <h5>Write a Review about this Post</h5>
+                    <div class="form-group">
+                        <label>Rate This Link</label><br>
+                        <star-rating value="3" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false"
+                            (rate)="onRate($event)"></star-rating>
+                    </div>
+                    <div class="form-group">
+                        <label>Comment : </label>
+                        <textarea class="form-control" formControlName="comment"
+                            placeholder="Enter Your Comment Here"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button class="btn btn-secondary ml-2" (click)="hideModal()">Cancel</button>
+                </form>
+            </div>
+        </div>
     </div>
-</div> -->
-<div style="text-align:center">
-    <strong>Rating is :{{rating}}</strong>
-    <star-rating value="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false"
-        (rate)="onRate($event)"></star-rating>
 </div>

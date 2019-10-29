@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api.service';
 import { async } from '@angular/core/testing';
 import { StarRatingComponent } from 'ng-starrating';
+import { Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-resource',
@@ -20,10 +21,13 @@ export class ResourceComponent implements OnInit {
   data: any;
   comments: any;
   ratings: any;
-  grid = false;
+  onlyRating = []
   list = true;
-  rating=5;
-  constructor(private route: ActivatedRoute, private api: ApiService) {
+  rating = 5;
+  modal=false;
+  modelData:any;
+  rateCommentForm:any;
+  constructor(private route: ActivatedRoute, private api: ApiService,private fb:FormBuilder) {
     this.query = this.route.queryParams
     this.subcat = this.query._value.subcat
     this.lvl = this.query._value.lvl
@@ -33,6 +37,18 @@ export class ResourceComponent implements OnInit {
 
   ngOnInit() {
     this.getResources()
+    this.rateCommentForm=this.fb.group({
+      comment: ['',[Validators.required]],
+    })
+  }
+
+  resourceDetails(resource){
+    console.log(resource)
+    this.modelData=resource
+    this.modal=true
+  }
+  hideModal(){
+    this.modal=false
   }
 
   async getResources() {
@@ -40,10 +56,23 @@ export class ResourceComponent implements OnInit {
     data.subscribe((res: any) => {
       this.data = res.resources.filter((r: any) => r.resource_type == this.type)
       for (let i = 0; i < this.data.length; i++) {
-        let comments = res.comments.filter(c => c.resource == this.data[i].id)
-        let ratings = res.ratings.filter(c => c.resource == this.data[i].id)
-        this.data[i] = { ...this.data[i], comments: comments, ratings: ratings }
+        this.comments = res.comments.filter(c => c.resource == this.data[i].id)
+        this.ratings = res.ratings.filter(c => c.resource == this.data[i].id)
+        let twoComment: any;
+        if (this.comments.length > 2) {
+          twoComment.push(this.comments[0])
+          twoComment.push(this.comments[1])
+        } else {
+          twoComment = Array.from(this.comments)
+        }
+        console.log(twoComment)
+        this.data[i] = { ...this.data[i], comments: this.comments, fewComment: twoComment }
+        console.log(this.data)
       }
+      for (let i = 0; i < this.data.length; i++) {
+        this.onlyRating = this.ratings.filter(r => r.rated_by != this.comments[i].commenter)
+      }
+
       console.log(this.data)
       if (this.data.length == 0) {
         this.empty = true
@@ -58,12 +87,19 @@ export class ResourceComponent implements OnInit {
     })
   }
 
+  getRating(rater, resource) {
+    let rate: any = this.ratings.filter(r => (r.rated_by == rater) && (r.resource == resource))
+    if (rate[0] != undefined) {
+      return rate[0].rating
+    } else {
+      return 0;
+    }
+  }
+
   layoutChange(n) {
     if (n == 1) {
-      this.grid = true
       this.list = false
     } else {
-      this.grid = false
       this.list = true
     }
   }
