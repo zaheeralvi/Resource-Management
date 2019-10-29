@@ -23,7 +23,7 @@ export class ResourceComponent implements OnInit {
   ratings: any;
   onlyRating = []
   list = true;
-  rating = 5;
+  rate = 0;
   modal=false;
   modelData:any;
   rateCommentForm:any;
@@ -105,7 +105,27 @@ export class ResourceComponent implements OnInit {
   }
 
   onRate($event: { oldValue: number, newValue: number, starRating: StarRatingComponent }) {
-    this.rating = $event.newValue
+    this.rate = $event.newValue
+  }
+
+  ratingHandler(){
+    if(this.rate!=0 || this.rateCommentForm.controls['comment'].value!=''){
+      let dataobj:any={resource_id:this.modelData.id}
+      if(this.rate!=0){
+        dataobj={...dataobj,rating:this.rate}
+      }
+      if(this.rateCommentForm.controls['comment'].value!=''){
+        dataobj={...dataobj,comment: this.rateCommentForm.controls['comment'].value}
+      }
+      let data=this.api.postData('post_comment_rating/',dataobj)
+      data.subscribe((res:any)=>{
+        console.log(res)
+        this.rate=0;
+        this.rateCommentForm.reset();
+      })
+    }else{
+      return null
+    }
   }
 
 }

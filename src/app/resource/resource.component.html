@@ -166,12 +166,12 @@
         </div>
         <div class="row py-4">
             <div class="col-md-7 offset-md-2">
-                <form [formGroup]='rateCommentForm'>
+                <form [formGroup]='rateCommentForm' (ngSubmit)="ratingHandler()">
                     <h5>Write a Review about this Post</h5>
                     <div class="form-group">
                         <label>Rate This Link</label><br>
-                        <star-rating value="3" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false"
-                            (rate)="onRate($event)"></star-rating>
+                        <star-rating [value]="rate" checkedcolor="red" uncheckedcolor="black" size="24px"
+                            readonly="false" (rate)="onRate($event)"></star-rating>
                     </div>
                     <div class="form-group">
                         <label>Comment : </label>
