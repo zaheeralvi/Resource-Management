@@ -19,7 +19,7 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '',
-    redirectTo: '/login',
+    redirectTo: '/categories',
     pathMatch: 'full'
   },
   {path: "categories", component:CategoriesComponent},

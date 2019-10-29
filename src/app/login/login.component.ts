@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
         }else{
           window.location.href='/role'
         }
+      },(err:any)=>{
+        window.location.href='/role'
       })
     }
   }

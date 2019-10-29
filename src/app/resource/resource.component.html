@@ -24,7 +24,7 @@
                 <div class="d-flex">
                     <div class="d-flex flex-column">
                         <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
-                        <a href="#"><img src="assets/images/Share.png" width="55px" title="Share It"></a>
+                        <star-rating [value]="resource.avg_rating" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true"></star-rating>
                         <a class="pointer" (click)="followAuther(resource.author)"><img src="assets/images/Profile.png"
                                 width="60px" title="Follow Auther"></a>
                     </div>
@@ -61,7 +61,7 @@
                     <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png"
                         style="border: 1px solid black">
                     <p class="card-text" style="text-align: center;">{{resource.description}}</p>
-                    <!-- <star-rating [value]="resource.avg_rating" checkedcolor="red" uncheckedcolor="black" size="24px"    readonly="true"></star-rating> -->
+                    <star-rating [value]="resource.avg_rating" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true"></star-rating>
                 </div>
             </div>
         </div>
