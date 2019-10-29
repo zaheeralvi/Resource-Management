@@ -81,7 +81,7 @@ export class ResourceComponent implements OnInit {
   }
 
   followAuther = async (auther) => {
-    let data = await this.api.getData('follow_author/?aut_id=1')
+    let data = await this.api.getData('follow_author/?aut_id='+auther)
     data.subscribe((res: any) => {
       console.log(res)
     })

@@ -2,23 +2,8 @@
 <div class="container-fulid d-flex pt-2" >
   <div class="col-md-7 offset-md-1 grey_title pb-1" style="background-color: #1d8459; border: 1px solid black">
       <div class="pt-2" id="Title">
-          <h5>resource.resource_type</h5>
-      </div>
-      <!-- Search Bar-->
-      <!-- <div class="d-flex">
-          <a href="#"><img src="assets/images/left.png" width="40px"></a>
-          <a href="#"><img src="assets/images/Right.png" width="40px"></a>
-          <a href="#"><img src="assets/images/Reset.png" width="60px"></a>
-          <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png"
-              style="border: 1px solid black">
-      </div>
-      <div style="background-color: #fff; border: 1px solid Black">
-          <div class="d-flex pt-3 pb-3">
-          </div>
-      </div> -->
-      <div class="d-flex">
-          <img src="assets/images/book.png" width="20%" class="pl-2">
-          <p class="pt-3 pl-3" id="Description"><b>resource.description</b></p>
+          <img src="assets/images/Author.png" width="50" style="border-radius: 50%">
+          <h5 class="d-inline-block ml-2 text-white text-capitalize">{{data}}</h5>
       </div>
   </div>
   <div class="col-md-3 pl-5">
@@ -26,7 +11,7 @@
           <div class="d-flex flex-column">
               <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
               <a href="#"><img src="assets/images/Share.png" width="55px" title="Share It"></a>
-              <a class="pointer" (click)="followAuther(resource.author)"><img src="assets/images/Profile.png" width="60px" title="Follow Auther"></a>
+              <a class="pointer" (click)="followAuther(teacher_id)"><img src="assets/images/Profile.png" width="60px" title="Follow Auther"></a>
           </div>
       </div>
   </div>

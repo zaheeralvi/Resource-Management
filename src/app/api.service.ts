@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,14 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
   baseurl = "https://immense-caverns-13289.herokuapp.com/";
-  httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('Token') }) }
+  httpHeaders:any;
+  
+  constructor(private http: HttpClient, private auth:AuthService) { 
+  }
 
-  constructor(private http: HttpClient) { }
+  ngOnInit() {
+    this.httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': this.auth.getToken() }) }
+  }
 
   getallsubjects(): Observable<any> {
     return this.http.get(this.baseurl + '/admin/boardapp/subjectmodel/', this.httpHeaders)

@@ -25,6 +25,7 @@ export class AuthService {
       }
     });
 
+    this.getToken()
    }
 
   public get currentUserValue(): firebase.User {
@@ -44,6 +45,20 @@ export class AuthService {
         })
       })
       return true;
+  }
+
+  getToken(){
+    let user=JSON.parse(localStorage.getItem('currentUser'));
+    let Token;
+      firebase.auth().onAuthStateChanged(function (user) {
+        user.getIdToken(true).then(accessToken => {
+          localStorage.setItem('Token', 'JWT '+accessToken)
+          Token='JWT '+accessToken
+        }).catch(err => {
+          console.log(err)
+        })
+      });
+    return Token
   }
 
   async logout() {

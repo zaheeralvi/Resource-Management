@@ -9,17 +9,30 @@ import { ApiService } from '../api.service';
 })
 export class TeachersListComponent implements OnInit {
 
-  data:any;
-  empty=false
-  constructor(private api:ApiService) { }
+  data: any;
+  empty = false
+  teacher_id;
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
     this.getTeacher();
   }
 
-  getTeacher=async ()=>{
-    let data=await this.api.getData('get_teachers/')
-    data.subscribe((res:any)=>{
+  getTeacher = async () => {
+    let data = await this.api.getData('follow_author/')
+    data.subscribe((res: any) => {
+      console.log(res)
+      this.teacher_id=res.followed.user
+      if (res.usernames.hasOwnProperty(1)) {
+        var value = res.usernames[1];
+        this.data = value
+      }
+    })
+  }
+
+  followAuther = async (auther) => {
+    let data = await this.api.getData('follow_author/?aut_id=' + auther)
+    data.subscribe((res: any) => {
       console.log(res)
     })
   }

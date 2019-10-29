@@ -16,16 +16,16 @@ export class TopRatedComponent implements OnInit {
   ratings: any;
   onlyRating = []
   comments: any;
-  modelData:any
-  modal=false
-  rateCommentForm:any
-  rate=0
-  constructor(private api: ApiService,private fb:FormBuilder) { }
+  modelData: any
+  modal = false
+  rateCommentForm: any
+  rate = 0
+  constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.topRated();
-    this.rateCommentForm=this.fb.group({
-      comment: ['',[Validators.required]],
+    this.rateCommentForm = this.fb.group({
+      comment: ['', [Validators.required]],
     })
   }
   topRated = async () => {
@@ -87,23 +87,30 @@ export class TopRatedComponent implements OnInit {
     })
   }
 
-  ratingHandler(){
-    if(this.rate!=0 || this.rateCommentForm.controls['comment'].value!=''){
-      let dataobj:any={resource_id:this.modelData.id}
-      if(this.rate!=0){
-        dataobj={...dataobj,rating:this.rate}
+  ratingHandler() {
+    if (this.rate != 0 || this.rateCommentForm.controls['comment'].value != '') {
+      let dataobj: any = { resource_id: this.modelData.id }
+      if (this.rate != 0) {
+        dataobj = { ...dataobj, rating: this.rate }
       }
-      if(this.rateCommentForm.controls['comment'].value!=''){
-        dataobj={...dataobj,comment: this.rateCommentForm.controls['comment'].value}
+      if (this.rateCommentForm.controls['comment'].value != '') {
+        dataobj = { ...dataobj, comment: this.rateCommentForm.controls['comment'].value }
       }
-      let data=this.api.postData('post_comment_rating/',dataobj)
-      data.subscribe((res:any)=>{
+      let data = this.api.postData('post_comment_rating/', dataobj)
+      data.subscribe((res: any) => {
         console.log(res)
-        this.rate=0;
+        this.rate = 0;
         this.rateCommentForm.reset();
       })
-    }else{
+    } else {
       return null
     }
+  }
+
+  followAuther = async (auther) => {
+    let data = await this.api.getData('follow_author/?aut_id=' + auther)
+    data.subscribe((res: any) => {
+      console.log(res)
+    })
   }
 }
