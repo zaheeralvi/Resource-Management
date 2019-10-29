@@ -61,6 +61,7 @@
                     <input type="text" class="form-control" placeholder="www.google.com/first+bar+website.png"
                         style="border: 1px solid black">
                     <p class="card-text" style="text-align: center;">{{resource.description}}</p>
+                    <!-- <star-rating [value]="resource.avg_rating" checkedcolor="red" uncheckedcolor="black" size="24px"    readonly="true"></star-rating> -->
                 </div>
             </div>
         </div>
@@ -96,3 +97,8 @@
         </form>
     </div>
 </div> -->
+<div style="text-align:center">
+    <strong>Rating is :{{rating}}</strong>
+    <star-rating value="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false"
+        (rate)="onRate($event)"></star-rating>
+</div>

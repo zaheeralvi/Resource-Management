@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api.service';
 import { async } from '@angular/core/testing';
+import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-resource',
@@ -21,6 +22,7 @@ export class ResourceComponent implements OnInit {
   ratings: any;
   grid = false;
   list = true;
+  rating=5;
   constructor(private route: ActivatedRoute, private api: ApiService) {
     this.query = this.route.queryParams
     this.subcat = this.query._value.subcat
@@ -38,9 +40,9 @@ export class ResourceComponent implements OnInit {
     data.subscribe((res: any) => {
       this.data = res.resources.filter((r: any) => r.resource_type == this.type)
       for (let i = 0; i < this.data.length; i++) {
-        let comments=res.comments.filter(c=>c.resource==this.data[i].id)
-        let ratings=res.ratings.filter(c=>c.resource==this.data[i].id)
-        this.data[i]={...this.data[i],comments:comments,ratings:ratings}
+        let comments = res.comments.filter(c => c.resource == this.data[i].id)
+        let ratings = res.ratings.filter(c => c.resource == this.data[i].id)
+        this.data[i] = { ...this.data[i], comments: comments, ratings: ratings }
       }
       console.log(this.data)
       if (this.data.length == 0) {
@@ -64,6 +66,10 @@ export class ResourceComponent implements OnInit {
       this.grid = false
       this.list = true
     }
+  }
+
+  onRate($event: { oldValue: number, newValue: number, starRating: StarRatingComponent }) {
+    this.rating = $event.newValue
   }
 
 }

@@ -16,8 +16,7 @@ export class AuthService {
       if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         user.getIdToken().then(tok=>{
-          console.log(tok);
-          
+          // console.log(tok);          
         })
         this.currentUserSubject.next(user);
         
