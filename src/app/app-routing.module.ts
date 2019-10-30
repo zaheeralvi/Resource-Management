@@ -38,7 +38,7 @@ const routes: Routes = [
   {path : "role", component:RoleComponent},
   {path : "teachers", component:TeachersListComponent},
   {path : "login", component:LoginComponent},
-  {path: '404', redirectTo: '/categories'}
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
