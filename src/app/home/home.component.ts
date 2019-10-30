@@ -45,6 +45,9 @@ export class HomeComponent implements OnInit {
   ]
   constructor(private api: ApiService) {
     this.getSubjects();
+    if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
+      window.location.href='/login'
+    } 
    }
 
    getSubjects = () => {

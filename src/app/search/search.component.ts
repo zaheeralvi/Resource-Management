@@ -13,6 +13,9 @@ export class SearchComponent implements OnInit {
   data:any;
   empty=false;
   constructor(private route: ActivatedRoute, private api: ApiService) {
+    if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
+      window.location.href='/login'
+    } 
     this.query = this.route.queryParams
     this.query = this.query._value.q
     console.log('test')

@@ -12,7 +12,11 @@ export class TeachersListComponent implements OnInit {
   data: any;
   empty = false
   teacher_id;
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {
+    if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
+      window.location.href='/login'
+    } 
+   }
 
   ngOnInit() {
     this.getTeacher();

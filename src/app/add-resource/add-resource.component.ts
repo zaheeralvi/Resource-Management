@@ -17,7 +17,11 @@ export class AddResourceComponent implements OnInit {
   sub_id;
   lvl_id;
   topic_id;
-  constructor(private fb: FormBuilder, private api: ApiService) { }
+  constructor(private fb: FormBuilder, private api: ApiService) {
+    if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
+      window.location.href='/login'
+    } 
+   }
 
   ngOnInit() {
     this.getSubjects();

@@ -11,7 +11,11 @@ export class AddtopicComponent implements OnInit {
 
   addTopic:any;
   subbmitted=false;
-  constructor(private fb:FormBuilder,private api:ApiService) { }
+  constructor(private fb:FormBuilder,private api:ApiService) { 
+    if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
+      window.location.href='/login'
+    } 
+  }
 
   ngOnInit() {
     this.addTopic=this.fb.group({

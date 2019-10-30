@@ -25,6 +25,9 @@ export class SubcatComponent implements OnInit {
 
   ]
   constructor(private api:ApiService,private route:ActivatedRoute) {
+    if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
+      window.location.href='/login'
+    } 
     this.id = this.route.snapshot.params['id'];
     console.log(this.id)
    }

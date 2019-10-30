@@ -20,7 +20,11 @@ export class TopRatedComponent implements OnInit {
   modal = false
   rateCommentForm: any
   rate = 0
-  constructor(private api: ApiService, private fb: FormBuilder) { }
+  constructor(private api: ApiService, private fb: FormBuilder) {
+    if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
+      window.location.href='/login'
+    } 
+   }
 
   ngOnInit() {
     this.topRated();
