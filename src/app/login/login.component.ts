@@ -24,7 +24,9 @@ export class LoginComponent implements OnInit {
       let httpHeaders = { headers: new HttpHeaders({ 'Authorization': localStorage.getItem('Token') }) }
       this.http.get(this.api.baseurl + 'set_retrieve_role/', httpHeaders).subscribe((result: any) => {
         console.log(result)
+        this.api.message('Login Successfully')
         if (result.role!=undefined){
+          this.api.message('Login Successfully')
           localStorage.setItem('currentLogged',JSON.stringify(result))
           window.location.href='/categories'
         }else{

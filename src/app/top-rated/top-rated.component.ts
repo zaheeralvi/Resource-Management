@@ -85,7 +85,7 @@ export class TopRatedComponent implements OnInit {
     let data = await this.api.getData(`save_resource?rsc_id=${id}`)
     data.subscribe((res: any) => {
       console.log(res)
-      // this.data = res
+      this.api.message(res.OK)
 
     })
   }

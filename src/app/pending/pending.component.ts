@@ -36,6 +36,7 @@ export class PendingComponent implements OnInit {
     let data = await this.api.getData('approve_resource/?rsc_id='+id)
     data.subscribe((res:any)=>{
       console.log(res)
+      this.api.message('Approved')
       this.data.splice(i, 1);
     })
   }

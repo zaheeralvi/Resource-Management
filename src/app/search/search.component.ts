@@ -41,6 +41,7 @@ export class SearchComponent implements OnInit {
     let data = await this.api.getData('follow_author/?aut_id=' + auther)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.message(res.OK)
     })
   }
 
@@ -48,6 +49,7 @@ export class SearchComponent implements OnInit {
     let data = await this.api.getData(`save_resource?rsc_id=${id}`)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.message(res.OK)
       // this.data = res
 
     })

@@ -63,6 +63,7 @@ export class AddtopicComponent implements OnInit {
       let data= await this.api.postData('create_topic/',topic)
       data.subscribe((res:any)=>{
         console.log(res)
+        this.api.message('New Topic Created')
         this.addTopic.reset();
       })
     }

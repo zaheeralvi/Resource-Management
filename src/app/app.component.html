@@ -36,7 +36,8 @@
       </div>
     </div>
     <h5><a routerLink="/pins">My Pins</a></h5>
-    <h6 class="pt-2" *ngIf='currentUser.role || currentUser.is_admin'><a routerLink="/add-resource">Create Resource</a></h6>
+    <h6 class="pt-2" *ngIf='currentUser.role || currentUser.is_admin'><a routerLink="/add-resource">Create Resource</a>
+    </h6>
     <h6 class="pt-2" *ngIf='currentUser.is_admin'><a routerLink="/addtopic">Create Topic</a></h6>
     <h6 class="pt-2" *ngIf='currentUser.is_admin'><a routerLink="/pending">Get Pendings</a></h6>
     <div class="pl-5">
@@ -49,7 +50,10 @@
     <div class="my-rating"></div>
   </div>
 
-  <div class="col-md-10" style="background-color: #eeeeee" *ngIf='!loginPage'>
+  <div class="col-md-10" style="background-color: #eeeeee;position:relative" *ngIf='!loginPage'>
+    <div class="alert alert-success" style="position:fixed;right:0;top:0;" *ngIf='api.alert'>
+      {{api.alertMsg}}
+    </div>
     <router-outlet></router-outlet>
   </div>
   <div class="d-inline-block" style="background-color: #fff;margin: 50px auto;text-align: center;" *ngIf='loginPage'>

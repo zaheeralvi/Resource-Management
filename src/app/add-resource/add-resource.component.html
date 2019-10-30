@@ -16,33 +16,33 @@
     <div class="form-group">
       <label>Level</label>
       <select class="form-control" (change)='getTopic($event)' formControlName='level'>
-          <option value="" disabled>Select Level</option>
-          <option [value]="sub.id" *ngFor='let sub of subCat'>{{sub.title}}</option>
-        </select>
+        <option value="" disabled>Select Level</option>
+        <option [value]="sub.id" *ngFor='let sub of subCat'>{{sub.title}}</option>
+      </select>
       <label class="error" *ngIf="subbmitted && f.level.errors">Level is required</label>
     </div>
     <div class="form-group">
       <label>Topic</label>
       <select class="form-control" formControlName='topic'>
-          <option value="" disabled>Select Topic</option>
-          <option [value]="sub.id" *ngFor='let sub of topic'>{{sub.title}}</option>
-        </select>
+        <option value="" disabled>Select Topic</option>
+        <option [value]="sub.id" *ngFor='let sub of topic'>{{sub.title}}</option>
+      </select>
       <label class="error" *ngIf="subbmitted && f.topic.errors">Topic is required</label>
     </div>
     <div class="form-group">
       <label>Resource type</label>
       <select class="form-control" formControlName='resource_type'>
-          <option value="" disabled>Select Resource Type</option>
-          <option value="notes">Notes</option>
-          <option value="exercise">Exercise</option>
-        </select>
+        <option value="" disabled>Select Resource Type</option>
+        <option value="notes">Notes</option>
+        <option value="exercise">Exercise</option>
+      </select>
       <label class="error" *ngIf="subbmitted && f.resource_type.errors">Resource type is required</label>
     </div>
     <div class="form-group">
-        <label>Description</label>
-        <textarea class="form-control" formControlName='description' placeholder="Enter Description" rows="5"></textarea>
-        <label class="error" *ngIf="subbmitted && f.description.errors">Description is required</label>
-      </div>
+      <label>Description</label>
+      <textarea class="form-control" formControlName='description' placeholder="Enter Description" rows="5"></textarea>
+      <label class="error" *ngIf="subbmitted && f.description.errors">Description is required</label>
+    </div>
     <button type="submit" class="btn btn-success btn-block">Submit</button>
   </form>
 </div>

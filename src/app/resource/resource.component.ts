@@ -86,6 +86,7 @@ export class ResourceComponent implements OnInit {
     let data = await this.api.getData('follow_author/?aut_id='+auther)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.message(res.OK)
     })
   }
 
@@ -122,6 +123,7 @@ export class ResourceComponent implements OnInit {
       let data=await this.api.postData('post_comment_rating/',dataobj)
       data.subscribe((res:any)=>{
         console.log(res)
+        this.api.message('Rating Posted')
         this.rate=0;
         this.rateCommentForm.reset();
       })
@@ -134,6 +136,7 @@ export class ResourceComponent implements OnInit {
     let data = await this.api.getData(`save_resource?rsc_id=${id}`)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.message(res.OK)
       // this.data = res
 
     })

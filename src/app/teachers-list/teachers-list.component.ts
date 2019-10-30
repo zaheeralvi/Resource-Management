@@ -33,6 +33,7 @@ export class TeachersListComponent implements OnInit {
     let data = await this.api.getData('follow_author/?aut_id=' + auther)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.message(res.OK)
     })
   }
 }

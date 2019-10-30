@@ -17,6 +17,7 @@ export class AddResourceComponent implements OnInit {
   sub_id;
   lvl_id;
   topic_id;
+  alert=true
   constructor(private fb: FormBuilder, private api: ApiService) {
     if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
       window.location.href='/login'
@@ -82,6 +83,7 @@ export class AddResourceComponent implements OnInit {
       let data = await this.api.postData('get_create_resource/', topic)
       data.subscribe((res: any) => {
         console.log(res)
+        this.api.message('New Resource Created')
         this.addResource.reset();
       })
     }

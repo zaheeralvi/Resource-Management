@@ -10,8 +10,18 @@ export class ApiService {
 
   baseurl = "https://immense-caverns-13289.herokuapp.com/";
   httpHeaders = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('Token') }) }
-  
-  constructor(private http: HttpClient, private auth:AuthService) { 
+  alert = false
+  alertMsg = ''
+  constructor(private http: HttpClient, private auth: AuthService) {
+  }
+  message(msg) {
+    console.log(msg)
+    this.alert = true
+    this.alertMsg = msg;
+    setTimeout(() => {
+      this.alert = false
+      this.alertMsg = 'msg';
+    }, 2000);
   }
   getallsubjects(): Observable<any> {
     return this.http.get(this.baseurl + '/admin/boardapp/subjectmodel/', this.httpHeaders)
@@ -20,8 +30,8 @@ export class ApiService {
   async getData(url) {
     return this.http.get(this.baseurl + url, this.httpHeaders)
   }
-  async postData(url,data) {
-    return this.http.post(this.baseurl + url,data, this.httpHeaders)
+  async postData(url, data) {
+    return this.http.post(this.baseurl + url, data, this.httpHeaders)
   }
 
 }
