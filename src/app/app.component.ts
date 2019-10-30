@@ -14,14 +14,16 @@ export class AppComponent implements OnInit {
   logged = false;
   user = null;
   loginPage = false;
-  
-mySubscription: any;
+  currentUser:any;
+
+  mySubscription: any;
   @ViewChild("inputSearch") search: ElementRef;
   constructor(private http: HttpClient, private router: Router, private api: ApiService, private authService: AuthService) {
     if (window.location.pathname == '/login' || window.location.pathname == '/role') {
       this.loginPage = true
     } else {
       this.loginPage = false
+      this.currentUser = JSON.parse(localStorage.getItem('currentLogged'))
     }
 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -68,6 +70,7 @@ mySubscription: any;
     let res = this.authService.logout();
     if (res) {
       this.logged = false
+      localStorage.removeItem('currentLogged')
       window.location.href = '/login'
     }
   }

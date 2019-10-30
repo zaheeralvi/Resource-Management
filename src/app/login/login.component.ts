@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
       this.http.get(this.api.baseurl + 'set_retrieve_role/', httpHeaders).subscribe((result: any) => {
         console.log(result)
         if (result.role!=undefined){
+          localStorage.setItem('currentLogged',JSON.stringify(result))
           window.location.href='/categories'
         }else{
           window.location.href='/role'

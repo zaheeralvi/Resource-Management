@@ -36,21 +36,14 @@
       </div>
     </div>
     <h5><a routerLink="/resource">My Resources</a></h5>
-    <h6 class="pt-2"><a routerLink="/add-resource">Create Resource</a></h6>
-    <h5 class="pt-2"><a href="#" style="color: #1d8459;">Follow</a></h5>
+    <h6 class="pt-2" *ngIf='currentUser.role || currentUser.is_admin'><a routerLink="/add-resource">Create Resource</a></h6>
+    <h6 class="pt-2" *ngIf='currentUser.is_admin'><a routerLink="/addtopic">Create Topic</a></h6>
+    <h6 class="pt-2" *ngIf='currentUser.is_admin'><a routerLink="/pending">Get Pendings</a></h6>
     <div class="pl-5">
       <hr>
     </div>
-    <h6><a class="nav-item nav-link" href="#">My Pins</a></h6>
-    <h6><a class="nav-item nav-link" routerLink="/pending">Admin</a></h6>
     <h6><a routerLink="/categories">Categories</a></h6>
     <h6 class="pt-1"><a routerLink="/top-rated">Top Rated</a></h6>
-    <h6 class="pt-1"><a href="#">Top Authors</a></h6>
-    <!-- <div class="pl-5">
-                    <hr>
-                </div> -->
-    <h6 class="pt-1"><a href="#">Most viewed</a></h6>
-    <h6 class="pt-1"><a href="#">Most Popular</a></h6>
     <div class="my-rating"></div>
   </div>
 
