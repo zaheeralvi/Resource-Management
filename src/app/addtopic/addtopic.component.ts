@@ -11,6 +11,9 @@ export class AddtopicComponent implements OnInit {
 
   addTopic:any;
   subbmitted=false;
+  subjects:any;
+  sub_id:any;
+  subCat:any;
   constructor(private fb:FormBuilder,private api:ApiService) { 
     if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
       window.location.href='/login'
@@ -23,7 +26,29 @@ export class AddtopicComponent implements OnInit {
       subject: ['',[Validators.required]],
       level: ['',[Validators.required]]
     })
+    this.getSubjects()
   }
+
+  getSubjects = async () => {
+    const data = await this.api.getData('get_subjects/')
+    data.subscribe((res: any) => {
+      console.log(res)
+      if (res.length > 0) {
+        this.subjects = res;
+      }
+    })
+  }
+
+  async getLevel(e) {
+    this.sub_id = e.target.value;
+
+    const data = await this.api.getData('get_level_by_subject/?sub_id=' + this.sub_id)
+    data.subscribe((res: any) => {
+      console.log(res)
+      this.subCat = res;
+    })
+  }
+
 
   async addTopicHandler(){
     if(this.addTopic.invalid){
@@ -34,7 +59,8 @@ export class AddtopicComponent implements OnInit {
         subject:this.addTopic.controls['subject'].value,
         level:this.addTopic.controls['level'].value
       }
-      let data= await this.api.postData('/create_topic/',topic)
+      console.log(topic)
+      let data= await this.api.postData('create_topic/',topic)
       data.subscribe((res:any)=>{
         console.log(res)
         this.addTopic.reset();
