@@ -54,6 +54,11 @@ export class SearchComponent implements OnInit {
     let data = await this.api.getData(`save_resource?rsc_id=${id}`)
     data.subscribe((res: any) => {
       console.log(res)
+      if(res.resources.length==0){
+        this.empty=true
+      }else{
+        this.empty=false
+      }
       this.api.noloader()
       this.api.message(res.OK)
       // this.data = res
