@@ -18,7 +18,7 @@ import { TeachersListComponent } from './teachers-list/teachers-list.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '',
+  { path: '/',
     redirectTo: '/categories',
     pathMatch: 'full'
   },

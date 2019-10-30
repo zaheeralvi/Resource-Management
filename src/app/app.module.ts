@@ -59,7 +59,8 @@ import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@a
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [
-    { provide:  PathLocationStrategy, useClass:  PathLocationStrategy },
+    // { provide:  PathLocationStrategy, useClass:  PathLocationStrategy },
+    {provide: LocationStrategy, useClass: PathLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
