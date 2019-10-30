@@ -42,8 +42,7 @@ export class TopRatedComponent implements OnInit {
         this.ratings = res.ratings.filter(c => c.resource == this.data[i].id)
         let twoComment = []
         if (this.comments.length > 2) {
-          twoComment.push(this.comments[0])
-          twoComment.push(this.comments[1])
+          twoComment=this.comments.slice(0, 2);
         } else {
           twoComment = [...twoComment, this.comments]
         }
