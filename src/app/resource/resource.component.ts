@@ -130,4 +130,13 @@ export class ResourceComponent implements OnInit {
     }
   }
 
+  saveLink = async (id) => {
+    let data = await this.api.getData(`save_resource?rsc_id=${id}`)
+    data.subscribe((res: any) => {
+      console.log(res)
+      // this.data = res
+
+    })
+  }
+
 }

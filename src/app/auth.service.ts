@@ -25,6 +25,10 @@ export class AuthService {
       }
     });
 
+    setInterval(() => {
+      this.getToken()
+    }, 3000);
+
    }
 
   public get currentUserValue(): firebase.User {
@@ -47,19 +51,21 @@ export class AuthService {
   }
 
   getToken(){
-    // let user=JSON.parse(localStorage.getItem('currentUser'));
-    let Token;
-    var user = firebase.auth().currentUser;
-      // firebase.auth().onAuthStateChanged(function (user) {
-        user.getIdToken(true).then(accessToken => {
-          localStorage.setItem('Token', 'JWT '+accessToken)
-          Token='JWT '+accessToken
-        }).catch(err => {
-          console.log(err)
+    this.currentUserSubject = new BehaviorSubject<firebase.User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        user.getIdToken(true).then(tok=>{
+          localStorage.setItem('Token','JWT ' +tok);   
+          // console.log(tok)     
         })
-      // });
-      console.log(Token)
-    return Token
+        this.currentUserSubject.next(user);
+        
+      } else {
+        localStorage.setItem('currentUser', null);
+      }
+    });
   }
 
   async logout() {

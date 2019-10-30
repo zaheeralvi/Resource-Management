@@ -28,6 +28,8 @@ import { TeachersListComponent } from './teachers-list/teachers-list.component';
 import { LoginComponent } from './login/login.component';
 import { RatingModule } from 'ng-starrating';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
+import { MypinsComponent } from './mypins/mypins.component';
+import { TopTeachersComponent } from './top-teachers/top-teachers.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@a
     TopRatedComponent,
     RoleComponent,
     TeachersListComponent,
-    LoginComponent
+    LoginComponent,
+    MypinsComponent,
+    TopTeachersComponent
   ],
   imports: [
     BrowserModule,

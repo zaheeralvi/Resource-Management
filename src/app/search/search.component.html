@@ -1,30 +1,11 @@
-<div>
-    <div class="col-md-4">
-        <a routerLink="/gridresource"><img src="https://img.icons8.com/ios-filled/30/000000/activity-grid--v2.png"></a>
-        <a routerLink="/resource"><img src="https://img.icons8.com/material-two-tone/40/000000/day-view.png"></a>
-    </div>
-</div>
-
-<!-- Header -->
-<div class="container-fulid d-flex pt-2" *ngFor='let item of data'>
+<div class="container-fulid d-flex pt-2" *ngFor='let item of data.resources'>
     <!-- Title -->
 
     <div class="col-md-7 offset-md-1 grey_title pb-1" style="background-color: #1d8459; border: 1px solid black">
         <div class="pt-2" id="Title">
             <h5>{{item.resource_type}}</h5>
+            <input type="text" class="form-control" [value]="item.link">
         </div>
-        <!-- Search Bar-->
-        <!-- <div class="d-flex">
-            <a href="#"><img src="assets/images/left.png" width="40px"></a>
-            <a href="#"><img src="assets/images/Right.png" width="40px"></a>
-            <a href="#"><img src="assets/images/Reset.png" width="60px"></a>
-            <input type="text" class="form-control"  placeholder="www.google.com/first+bar+website.png"
-                style="border: 1px solid black">
-        </div>
-        <div style="background-color: #fff; border: 1px solid Black">
-            <div class="d-flex pt-3 pb-3">
-            </div>
-        </div> -->
         <div class="d-flex">
             <img src="assets/images/book.png" width="20%" class="pl-2">
             <p class="pt-3 pl-3" id="Description"><b>{{item.description}}</b></p>
@@ -33,9 +14,10 @@
     <div class="col-md-3 pl-5">
         <div class="d-flex">
             <div class="d-flex flex-column">
-                <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
-                <a href="#"><img src="assets/images/Share.png" width="55px" title="Share It"></a>
-                <a href="#"><img src="assets/images/Profile.png" width="60px"></a>
+                <a class="pointer" (click)="saveLink(item.id)"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
+                <star-rating [value]="item.avg_rating" checkedcolor="red" uncheckedcolor="black"
+                            size="24px" readonly="true"></star-rating>
+                <a class="pointer" (click)="followAuther(item.author)"><img src="assets/images/Profile.png" width="60px"></a>
             </div>
         </div>
     </div>

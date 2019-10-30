@@ -37,4 +37,20 @@ export class SearchComponent implements OnInit {
     })
   }
 
+  followAuther = async (auther) => {
+    let data = await this.api.getData('follow_author/?aut_id=' + auther)
+    data.subscribe((res: any) => {
+      console.log(res)
+    })
+  }
+
+  saveLink = async (id) => {
+    let data = await this.api.getData(`save_resource?rsc_id=${id}`)
+    data.subscribe((res: any) => {
+      console.log(res)
+      // this.data = res
+
+    })
+  }
+
 }

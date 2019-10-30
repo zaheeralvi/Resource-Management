@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { async } from '@angular/core/testing';
 import { ApiService } from '../api.service';
 
 @Component({
-  selector: 'app-teachers-list',
-  templateUrl: './teachers-list.component.html',
-  styleUrls: ['./teachers-list.component.css']
+  selector: 'app-top-teachers',
+  templateUrl: './top-teachers.component.html',
+  styleUrls: ['./top-teachers.component.css']
 })
-export class TeachersListComponent implements OnInit {
+export class TopTeachersComponent implements OnInit {
 
   data: any;
   empty = false
@@ -22,7 +21,7 @@ export class TeachersListComponent implements OnInit {
   }
 
   getTeacher = async () => {
-    let data = await this.api.getData('follow_author/')
+    let data = await this.api.getData('most_followed/')
     data.subscribe((res: any) => {
       console.log(res)
       this.data=res.usernames
@@ -35,4 +34,5 @@ export class TeachersListComponent implements OnInit {
       console.log(res)
     })
   }
+
 }

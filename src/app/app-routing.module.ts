@@ -16,6 +16,8 @@ import { TopRatedComponent } from './top-rated/top-rated.component';
 import { RoleComponent } from './role/role.component';
 import { TeachersListComponent } from './teachers-list/teachers-list.component';
 import { LoginComponent } from './login/login.component';
+import { MypinsComponent } from './mypins/mypins.component';
+import { TopTeachersComponent } from './top-teachers/top-teachers.component';
 
 const routes: Routes = [
   { path: '',
@@ -37,7 +39,9 @@ const routes: Routes = [
   {path : "top-rated", component:TopRatedComponent},
   {path : "role", component:RoleComponent},
   {path : "teachers", component:TeachersListComponent},
+  {path : "top-teachers", component:TopTeachersComponent},
   {path : "login", component:LoginComponent},
+  {path : "pins", component:MypinsComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

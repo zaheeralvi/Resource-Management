@@ -5,6 +5,7 @@
                 style="background-color: #1d8459; border: 1px solid black">
                 <div class="pt-2" id="Title">
                     <h5 class="text-center text-white text-capitalize">{{resource.resource_type}}</h5>
+                    <input type="text" class="form-control" [value]="resource.link">
                 </div>
                 <div class="d-flex">
                     <img src="assets/images/book.png" width="20%" class="pl-2">
@@ -16,7 +17,7 @@
             <div class="col-md-3 pl-5">
                 <div class="d-flex">
                     <div class="d-flex flex-column">
-                        <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
+                        <a class="pointer" (click)="saveLink(resource.id)"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
                         <star-rating [value]="resource.avg_rating" checkedcolor="red" uncheckedcolor="black" size="24px"
                             readonly="true"></star-rating>
                         <a class="pointer" (click)="followAuther(resource.author)"><img src="assets/images/Profile.png"
@@ -104,6 +105,7 @@
                 style="background-color: #1d8459; border: 1px solid black">
                 <div class="pt-2" id="Title">
                     <h5 class="text-white text-capitalize text-center">{{modelData.resource_type}}</h5>
+                    <input type="text" class="form-control" [value]="modelData.link">
                 </div>
                 <div class="d-flex">
                     <img src="assets/images/book.png" width="20%" class="pl-2">
@@ -113,7 +115,7 @@
             <div class="col-md-3 pl-5">
                 <div class="d-flex">
                     <div class="d-flex flex-column">
-                        <a href="#"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
+                        <a class="pointer" (click)="saveLink(modelData.id)"><img src="assets/images/Plus.png" width="55px" title="Save This"></a>
                         <star-rating [value]="modelData.avg_rating" checkedcolor="red" uncheckedcolor="black"
                             size="24px" readonly="true"></star-rating>
                         <a class="pointer" (click)="followAuther(modelData.author)"><img src="assets/images/Profile.png"
