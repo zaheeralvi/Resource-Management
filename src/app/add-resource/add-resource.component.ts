@@ -62,7 +62,7 @@ export class AddResourceComponent implements OnInit {
     })
   }
 
-  addResourceHandler() {
+  async addResourceHandler() {
     if (this.addResource.invalid) {
       this.subbmitted = true
     } else {
@@ -75,7 +75,7 @@ export class AddResourceComponent implements OnInit {
         description: this.addResource.controls['description'].value,
       }
 
-      let data = this.api.postData('get_create_resource/', topic)
+      let data = await this.api.postData('get_create_resource/', topic)
       data.subscribe((res: any) => {
         console.log(res)
         this.addResource.reset();

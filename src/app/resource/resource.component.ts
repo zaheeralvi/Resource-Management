@@ -108,7 +108,7 @@ export class ResourceComponent implements OnInit {
     this.rate = $event.newValue
   }
 
-  ratingHandler(){
+  async ratingHandler(){
     if(this.rate!=0 || this.rateCommentForm.controls['comment'].value!=''){
       let dataobj:any={resource_id:this.modelData.id}
       if(this.rate!=0){
@@ -117,7 +117,7 @@ export class ResourceComponent implements OnInit {
       if(this.rateCommentForm.controls['comment'].value!=''){
         dataobj={...dataobj,comment: this.rateCommentForm.controls['comment'].value}
       }
-      let data=this.api.postData('post_comment_rating/',dataobj)
+      let data=await this.api.postData('post_comment_rating/',dataobj)
       data.subscribe((res:any)=>{
         console.log(res)
         this.rate=0;

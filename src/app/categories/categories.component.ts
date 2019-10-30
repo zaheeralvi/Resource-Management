@@ -11,6 +11,9 @@ export class CategoriesComponent implements OnInit {
   subjects:any;
   empty=false
   constructor(private api: ApiService) {
+    if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
+      window.location.href='/login'
+    } 
    }
 
   ngOnInit() {

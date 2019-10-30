@@ -21,7 +21,7 @@ export class AddtopicComponent implements OnInit {
     })
   }
 
-  addTopicHandler(){
+  async addTopicHandler(){
     if(this.addTopic.invalid){
       this.subbmitted=true
     }else{
@@ -30,7 +30,7 @@ export class AddtopicComponent implements OnInit {
         subject:this.addTopic.controls['subject'].value,
         level:this.addTopic.controls['level'].value
       }
-      let data=this.api.postData('/create_topic/',topic)
+      let data= await this.api.postData('/create_topic/',topic)
       data.subscribe((res:any)=>{
         console.log(res)
         this.addTopic.reset();

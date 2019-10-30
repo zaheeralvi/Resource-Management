@@ -18,12 +18,6 @@ export class AppComponent implements OnInit {
 mySubscription: any;
   @ViewChild("inputSearch") search: ElementRef;
   constructor(private http: HttpClient, private router: Router, private api: ApiService, private authService: AuthService) {
-    if (localStorage.getItem('Token') != null || localStorage.getItem('Token') != undefined) {
-      this.logged = true
-    } else {
-      this.router.navigateByUrl('/login')
-    }
-
     if (window.location.pathname == '/login' || window.location.pathname == '/role') {
       this.loginPage = true
     } else {

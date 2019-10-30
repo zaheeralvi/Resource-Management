@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     let res = await this.authService.doGoogleLogin();
     if (res) {
       this.logged = true
-      let httpHeaders = { headers: new HttpHeaders({ 'Authorization': this.authService.getToken() }) }
+      let httpHeaders = { headers: new HttpHeaders({ 'Authorization': localStorage.getItem('Token') }) }
       this.http.get(this.api.baseurl + 'set_retrieve_role/', httpHeaders).subscribe((result: any) => {
         console.log(result)
         if (result.role!=undefined){

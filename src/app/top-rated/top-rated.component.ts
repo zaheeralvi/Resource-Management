@@ -29,7 +29,7 @@ export class TopRatedComponent implements OnInit {
     })
   }
   topRated = async () => {
-    let data = this.api.getData('sort_resources/?rating=True')
+    let data = await this.api.getData('sort_resources/?rating=True')
     data.subscribe((res: any) => {
       this.data = res.resources;
 
@@ -79,7 +79,7 @@ export class TopRatedComponent implements OnInit {
   }
 
   saveLink = async (id) => {
-    let data = this.api.getData(`save_resource?rsc_id=${id}`)
+    let data = await this.api.getData(`save_resource?rsc_id=${id}`)
     data.subscribe((res: any) => {
       console.log(res)
       // this.data = res
@@ -87,7 +87,7 @@ export class TopRatedComponent implements OnInit {
     })
   }
 
-  ratingHandler() {
+  async ratingHandler() {
     if (this.rate != 0 || this.rateCommentForm.controls['comment'].value != '') {
       let dataobj: any = { resource_id: this.modelData.id }
       if (this.rate != 0) {
@@ -96,7 +96,7 @@ export class TopRatedComponent implements OnInit {
       if (this.rateCommentForm.controls['comment'].value != '') {
         dataobj = { ...dataobj, comment: this.rateCommentForm.controls['comment'].value }
       }
-      let data = this.api.postData('post_comment_rating/', dataobj)
+      let data = await this.api.postData('post_comment_rating/', dataobj)
       data.subscribe((res: any) => {
         console.log(res)
         this.rate = 0;

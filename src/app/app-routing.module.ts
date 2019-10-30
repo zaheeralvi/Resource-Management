@@ -38,6 +38,7 @@ const routes: Routes = [
   {path : "role", component:RoleComponent},
   {path : "teachers", component:TeachersListComponent},
   {path : "login", component:LoginComponent},
+  {path: '**', redirectTo: '/categories'}
 ];
 
 @NgModule({

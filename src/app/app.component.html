@@ -17,10 +17,6 @@
 
   <div class="col-md-1"> </div>
 
-  <!-- <div class="col-md-2 mt-3 mb-3 text-center bg-theme text-white" style="border-radius: 3px;padding-top:5px;"
-    *ngIf='!logged'>
-    <a class="pointer" (click)="login()">Login With Google</a>
-  </div> -->
   <div class="dropdown col-md-3 pt-3 pr-5 text-right" *ngIf='logged'>
     <a class=" dropdown-toggle user" data-toggle="dropdown">
       <img height="40" width="40" src="assets/images/user-logo.png">
@@ -32,33 +28,8 @@
 
 </div>
 
-
-
-<!-- Second Navabr -->
-<!-- <div class="d-flex">
-
-  <div class="col-md-2 pt-3 pb-2 bg-theme">
-    <div class="d-flex pl-4 pr-2">
-      <h4 style="color: White">Resources</h4>
-    </div>
-  </div>
-
-  <nav class="navbar navbar-expand-lg navbar-light col-md-10" style="background-color:#fff">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="#">My Pins</a>
-        <a class="nav-item nav-link" routerLink="/pending">Admin</a>
-      </div>
-    </div>
-  </nav>
-</div> -->
-
-<div class="d-flex" style="min-height: 80vh;" *ngIf='!loginPage'>
-  <div class="col-md-2 bg-light px-0" style="text-align: center">
+<div class="d-flex" style="min-height: 90vh;">
+  <div class="col-md-2 bg-light px-0" style="text-align: center" *ngIf='!loginPage'>
     <div class="col-12 pt-3 pb-2 px-0 bg-theme mb-3">
       <div class="pl-4 pr-2">
         <h4 style="color: White">Resources</h4>
@@ -83,12 +54,19 @@
     <div class="my-rating"></div>
   </div>
 
-  <div class="col-md-10" style="background-color: #eeeeee">
+  <div class="col-md-10" style="background-color: #eeeeee" *ngIf='!loginPage'>
     <router-outlet></router-outlet>
+  </div>
+  <div class="d-inline-block" style="background-color: #fff;margin: 50px auto;text-align: center;" *ngIf='loginPage'>
+    <div class="d-flex">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
 
 </div>
-<div class="d-flex" style="min-height: 80vh;text-align: center;align-items: center;width: 75%;justify-content: space-around;" *ngIf='loginPage'>
-    <router-outlet></router-outlet>
-</div>
+<!-- <div class="d-flex"
+  style="min-height: 80vh;text-align: center;align-items: center;width: 75%;justify-content: space-around;"
+  *ngIf='loginPage'>
+  <router-outlet></router-outlet>
+</div> -->
