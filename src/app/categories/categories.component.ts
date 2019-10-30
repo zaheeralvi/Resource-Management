@@ -12,7 +12,7 @@ export class CategoriesComponent implements OnInit {
   empty=false
   constructor(private api: ApiService) {
     if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
-      window.location.href='/login'
+      window.location.href='/#/login'
     } 
    }
 

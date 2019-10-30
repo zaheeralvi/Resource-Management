@@ -11,7 +11,7 @@ export class RoleComponent implements OnInit {
 
   constructor(private api: ApiService, private router: Router) {
     if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
-      window.location.href='/login'
+      window.location.href='/#/login'
     } 
    }
 

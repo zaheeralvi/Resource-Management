@@ -22,7 +22,7 @@ export class TopRatedComponent implements OnInit {
   rate = 0
   constructor(private api: ApiService, private fb: FormBuilder) {
     if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
-      window.location.href='/login'
+      window.location.href='/#/login'
     } 
    }
 

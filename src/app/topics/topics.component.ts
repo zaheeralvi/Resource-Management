@@ -16,7 +16,7 @@ export class TopicsComponent implements OnInit {
   empty=false
   constructor(private route: ActivatedRoute, private api: ApiService) {
     if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
-      window.location.href='/login'
+      window.location.href='/#/login'
     } 
     this.query = this.route.queryParams
     this.subcat = this.query._value.subcat

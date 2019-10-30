@@ -19,7 +19,7 @@ export class AddResourceComponent implements OnInit {
   topic_id;
   constructor(private fb: FormBuilder, private api: ApiService) {
     if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
-      window.location.href='/login'
+      window.location.href='/#/login'
     } 
    }
 
