@@ -14,7 +14,7 @@ export class TeachersListComponent implements OnInit {
   teacher_id;
   constructor(private api: ApiService) {
     if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
-      window.location.href='/#/login'
+      window.location.href='/login'
     } 
    }
 

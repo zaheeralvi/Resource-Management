@@ -29,7 +29,7 @@ export class ResourceComponent implements OnInit {
   rateCommentForm:any;
   constructor(private route: ActivatedRoute, private api: ApiService,private fb:FormBuilder) {
     if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
-      window.location.href='/#/login'
+      window.location.href='/login'
     } 
     this.query = this.route.queryParams
     this.subcat = this.query._value.subcat

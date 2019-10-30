@@ -27,6 +27,7 @@ import { RoleComponent } from './role/role.component';
 import { TeachersListComponent } from './teachers-list/teachers-list.component';
 import { LoginComponent } from './login/login.component';
 import { RatingModule } from 'ng-starrating';
+import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,9 @@ import { RatingModule } from 'ng-starrating';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
-  providers: [],
+  providers: [
+    { provide:  PathLocationStrategy, useClass:  PathLocationStrategy },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

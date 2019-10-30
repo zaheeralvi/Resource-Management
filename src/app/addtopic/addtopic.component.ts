@@ -13,7 +13,7 @@ export class AddtopicComponent implements OnInit {
   subbmitted=false;
   constructor(private fb:FormBuilder,private api:ApiService) { 
     if (localStorage.getItem('Token') == null || localStorage.getItem('Token') == undefined) {
-      window.location.href='/#/login'
+      window.location.href='/login'
     } 
   }
 
