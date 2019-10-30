@@ -55,6 +55,7 @@ export class ResourceComponent implements OnInit {
   }
 
   async getResources() {
+    this.api.loader()
     let data = await this.api.getData(`navigate/?sub_id=${this.subcat}&lev_id=${this.lvl}&tpc_id=${this.topic}`)
     data.subscribe((res: any) => {
       this.data = res.resources.filter((r: any) => r.resource_type == this.type)
@@ -74,7 +75,7 @@ export class ResourceComponent implements OnInit {
       for (let i = 0; i < this.data.length; i++) {
         this.onlyRating = this.ratings.filter(r => r.rated_by != this.comments[i].commenter)
       }
-
+      this.api.noloader()
       console.log(this.data)
       if (this.data.length == 0) {
         this.empty = true
@@ -83,18 +84,23 @@ export class ResourceComponent implements OnInit {
   }
 
   followAuther = async (auther) => {
+    this.api.loader()
     let data = await this.api.getData('follow_author/?aut_id='+auther)
     data.subscribe((res: any) => {
       console.log(res)
       this.api.message(res.OK)
     })
+    this.api.noloader()
   }
 
   getRating(rater, resource) {
+    this.api.loader()
     let rate: any = this.ratings.filter(r => (r.rated_by == rater) && (r.resource == resource))
     if (rate[0] != undefined) {
+      this.api.noloader()
       return rate[0].rating
     } else {
+      this.api.noloader()
       return 0;
     }
   }
@@ -112,6 +118,7 @@ export class ResourceComponent implements OnInit {
   }
 
   async ratingHandler(){
+    this.api.loader()
     if(this.rate!=0 || this.rateCommentForm.controls['comment'].value!=''){
       let dataobj:any={resource_id:this.modelData.id}
       if(this.rate!=0){
@@ -125,6 +132,7 @@ export class ResourceComponent implements OnInit {
         console.log(res)
         this.api.message('Rating Posted')
         this.rate=0;
+        this.api.noloader()
         this.rateCommentForm.reset();
       })
     }else{
@@ -133,9 +141,11 @@ export class ResourceComponent implements OnInit {
   }
 
   saveLink = async (id) => {
+    this.api.loader()
     let data = await this.api.getData(`save_resource?rsc_id=${id}`)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
       this.api.message(res.OK)
       // this.data = res
 

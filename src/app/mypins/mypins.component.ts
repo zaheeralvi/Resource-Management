@@ -17,9 +17,11 @@ export class MypinsComponent implements OnInit {
   }
 
   getPins=async ()=>{
+    this.api.loader()
     let data=await this.api.getData('save_resource/')
     data.subscribe((res:any)=>{
       console.log(res)
+      this.api.noloader()
       this.data=res;
     })
   }

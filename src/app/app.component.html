@@ -54,6 +54,19 @@
     <div class="alert alert-success" style="position:fixed;right:0;top:0;" *ngIf='api.alert'>
       {{api.alertMsg}}
     </div>
+    <div class="Loader" *ngIf='api.loading'>
+      <div class="mesh-loader">
+        <p class="overlay"></p>
+        <div class="set-one">
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="set-two">
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
     <router-outlet></router-outlet>
   </div>
   <div class="d-inline-block" style="background-color: #fff;margin: 50px auto;text-align: center;" *ngIf='loginPage'>

@@ -21,9 +21,11 @@ export class PendingComponent implements OnInit {
   }
 
   async getPending() {
+    this.api.loader()
     let data = await this.api.getData('get_pending/')
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
       if(res.length==0){
         this.empty=true
       }else{
@@ -33,9 +35,11 @@ export class PendingComponent implements OnInit {
   }
 
   async approve(id,i){
+    this.api.loader()
     let data = await this.api.getData('approve_resource/?rsc_id='+id)
     data.subscribe((res:any)=>{
       console.log(res)
+      this.api.noloader()
       this.api.message('Approved')
       this.data.splice(i, 1);
     })

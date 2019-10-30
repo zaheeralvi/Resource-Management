@@ -38,9 +38,11 @@ export class AddResourceComponent implements OnInit {
   }
 
   getSubjects = async () => {
+    this.api.loader()
     const data = await this.api.getData('get_subjects/')
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
       if (res.length > 0) {
         this.subjects = res;
       }
@@ -49,20 +51,22 @@ export class AddResourceComponent implements OnInit {
 
   async getLevel(e) {
     this.sub_id = e.target.value;
-
+    this.api.loader()
     const data = await this.api.getData('get_level_by_subject/?sub_id=' + this.sub_id)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
       this.subCat = res;
     })
   }
 
   async getTopic(e){
     this.lvl_id = e.target.value;
-
+    this.api.loader()
     let data=await this.api.getData(`get_topic_by_sub_level/?sub_id=${this.sub_id}&lev_id=${this.lvl_id}`)
     data.subscribe((res:any)=>{
       console.log(res)
+      this.api.noloader()
       this.topic=res;
     })
   }
@@ -71,6 +75,7 @@ export class AddResourceComponent implements OnInit {
     if (this.addResource.invalid) {
       this.subbmitted = true
     } else {
+      this.api.loader()
       let topic = {
         link: this.addResource.controls['link'].value,
         subject: this.addResource.controls['subject'].value,
@@ -83,6 +88,7 @@ export class AddResourceComponent implements OnInit {
       let data = await this.api.postData('get_create_resource/', topic)
       data.subscribe((res: any) => {
         console.log(res)
+        this.api.noloader()
         this.api.message('New Resource Created')
         this.addResource.reset();
       })

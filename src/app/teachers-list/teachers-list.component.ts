@@ -22,17 +22,21 @@ export class TeachersListComponent implements OnInit {
   }
 
   getTeacher = async () => {
+    this.api.loader()
     let data = await this.api.getData('follow_author/')
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
       this.data=res.usernames
     })
   }
 
   followAuther = async (auther) => {
+    this.api.loader()
     let data = await this.api.getData('follow_author/?aut_id=' + auther)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
       this.api.message(res.OK)
     })
   }

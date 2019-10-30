@@ -26,9 +26,11 @@ export class SearchComponent implements OnInit {
   }
 
   async getSearchResult() {
+    this.api.loader()
     const data = await this.api.getData('search/?q=' + this.query)
     data.subscribe((res:any)=>{
       console.log(res)
+      this.api.noloader()
       if(res.length==0){
         this.empty=true
       }else{
@@ -38,17 +40,21 @@ export class SearchComponent implements OnInit {
   }
 
   followAuther = async (auther) => {
+    this.api.loader()
     let data = await this.api.getData('follow_author/?aut_id=' + auther)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
       this.api.message(res.OK)
     })
   }
 
   saveLink = async (id) => {
+    this.api.loader();
     let data = await this.api.getData(`save_resource?rsc_id=${id}`)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
       this.api.message(res.OK)
       // this.data = res
 

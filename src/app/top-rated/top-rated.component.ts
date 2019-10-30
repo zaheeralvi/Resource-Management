@@ -33,6 +33,7 @@ export class TopRatedComponent implements OnInit {
     })
   }
   topRated = async () => {
+    this.api.loader()
     let data = await this.api.getData('sort_resources/?rating=True')
     data.subscribe((res: any) => {
       this.data = res.resources;
@@ -51,7 +52,7 @@ export class TopRatedComponent implements OnInit {
       for (let i = 0; i < this.data.length; i++) {
         this.onlyRating = this.ratings.filter(r => r.rated_by != this.comments[i].commenter)
       }
-
+      this.api.noloader()
       console.log(this.data)
       if (this.data.length == 0) {
         this.empty = true
@@ -82,15 +83,18 @@ export class TopRatedComponent implements OnInit {
   }
 
   saveLink = async (id) => {
+    this.api.loader()
     let data = await this.api.getData(`save_resource?rsc_id=${id}`)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
       this.api.message(res.OK)
 
     })
   }
 
   async ratingHandler() {
+    this.api.loader()
     if (this.rate != 0 || this.rateCommentForm.controls['comment'].value != '') {
       let dataobj: any = { resource_id: this.modelData.id }
       if (this.rate != 0) {
@@ -103,6 +107,7 @@ export class TopRatedComponent implements OnInit {
       data.subscribe((res: any) => {
         console.log(res)
         this.rate = 0;
+        this.api.noloader()
         this.rateCommentForm.reset();
       })
     } else {
@@ -111,9 +116,11 @@ export class TopRatedComponent implements OnInit {
   }
 
   followAuther = async (auther) => {
+    this.api.loader()
     let data = await this.api.getData('follow_author/?aut_id=' + auther)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
     })
   }
 }

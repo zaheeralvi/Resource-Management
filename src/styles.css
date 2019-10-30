@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-form label{
+form label {
   font-weight: bold;
   color: #a9a7a7;
 }
@@ -7,65 +7,164 @@ label.error {
   color: #ff0000;
   padding-left: 15px;
   font-size: 14px;
-  font-weight: normal
+  font-weight: normal;
 }
 .ellipsis {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.form-container form{
+.form-container form {
   padding: 20px;
   background-color: #fff;
   border-radius: 5px;
 }
-textarea{
+textarea {
   resize: none;
   height: 150px;
 }
-.form-control:focus{
+.form-control:focus {
   box-shadow: none;
-  border-color: #ced4da
+  border-color: #ced4da;
 }
-.user.dropdown-toggle{
+.user.dropdown-toggle {
   cursor: pointer;
 }
-.user.dropdown-toggle::after{
-  display: none
+.user.dropdown-toggle::after {
+  display: none;
 }
-.bg-theme{
-  background-color: #f36f3a !important
+.bg-theme {
+  background-color: #f36f3a !important;
 }
-.bg-success{
-  background-color: #1d8459 !important
-}
-.btn-success{
+.bg-success {
   background-color: #1d8459 !important;
-  border-color: #1d8459 !important
 }
-.h4, h4{
+.btn-success {
+  background-color: #1d8459 !important;
+  border-color: #1d8459 !important;
+}
+.h4,
+h4 {
   font-size: 18px;
 }
-.pointer{
+.pointer {
   cursor: pointer;
 }
-.not_found{
+.not_found {
   width: 100%;
   flex: 0 0 100%;
   text-align: center;
   padding-top: 40px;
 }
-#Title{
+#Title {
   text-transform: capitalize;
 }
-#Description{
+#Description {
   text-transform: capitalize;
 }
-.pic_padding.comment{
+.pic_padding.comment {
   margin-bottom: 15px;
   /* border-bottom: 1px solid #f36f3a */
 }
-.d-flex.collapse:last-child .pic_padding.comment{
-  border-bottom: none
+.d-flex.collapse:last-child .pic_padding.comment {
+  border-bottom: none;
 }
-star-rating div{display: inline-block;}
+star-rating div {
+  display: inline-block;
+}
+/* MESH LOADER */
+
+.mesh-loader {
+  overflow: hidden;
+  height: inherit;
+  width: inherit;
+}
+.mesh-loader .circle {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  background: #f36f3a !important;
+  border-radius: 50%;
+  margin: -15px;
+  -webkit-animation: mesh 3s ease-in-out infinite -1.5s;
+  animation: mesh 3s ease-in-out infinite -1.5s;
+}
+
+.mesh-loader > div .circle:last-child {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+.mesh-loader > div {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.mesh-loader .overlay {
+  height: 100%;
+  width: 98%;
+  position: absolute;
+  background-color: rgba(0,0,0,.5);
+  z-index: 1;
+}
+
+.mesh-loader > div:last-child {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+@-webkit-keyframes mesh {
+  0% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  50% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  50.1% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mesh {
+  0% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  50% {
+    -webkit-transform-origin: 50% -100%;
+    transform-origin: 50% -100%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  50.1% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 200%;
+    transform-origin: 50% 200%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

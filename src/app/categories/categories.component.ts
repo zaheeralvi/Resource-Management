@@ -21,8 +21,10 @@ export class CategoriesComponent implements OnInit {
   }
 
   getResources = async () => {
+    this.api.loader()
     const data = await this.api.getData('get_subjects/')
     data.subscribe((res: any) => {
+      this.api.noloader()
       if(res.length>0){
         this.subjects=res;
       }else{

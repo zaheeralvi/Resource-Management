@@ -30,9 +30,11 @@ export class AddtopicComponent implements OnInit {
   }
 
   getSubjects = async () => {
+    this.api.loader()
     const data = await this.api.getData('get_subjects/')
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
       if (res.length > 0) {
         this.subjects = res;
       }
@@ -41,10 +43,11 @@ export class AddtopicComponent implements OnInit {
 
   async getLevel(e) {
     this.sub_id = e.target.value;
-
+    this.api.loader()
     const data = await this.api.getData('get_level_by_subject/?sub_id=' + this.sub_id)
     data.subscribe((res: any) => {
       console.log(res)
+      this.api.noloader()
       this.subCat = res;
     })
   }
@@ -54,6 +57,7 @@ export class AddtopicComponent implements OnInit {
     if(this.addTopic.invalid){
       this.subbmitted=true
     }else{
+      this.api.loader()
       let topic={
         title:this.addTopic.controls['title'].value,
         subject:this.addTopic.controls['subject'].value,
@@ -63,6 +67,7 @@ export class AddtopicComponent implements OnInit {
       let data= await this.api.postData('create_topic/',topic)
       data.subscribe((res:any)=>{
         console.log(res)
+        this.api.noloader()
         this.api.message('New Topic Created')
         this.addTopic.reset();
       })
